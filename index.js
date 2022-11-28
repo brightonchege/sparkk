@@ -44,7 +44,17 @@ searching.addEventListener('click',()=>{
         const middle = document.getElementById('middle')
         const moviecontainer = document.createElement('div')
               moviecontainer.className="moviecontainer"
-
+ moviecontainer.addEventListener('click',()=>{
+  believer = Math.floor(Math.random() * 14) + 1
+  if (believer === 1) { beli = "#214559",bola = '#262b2f'}  if (believer === 2) { beli = "#4f1507",bola = '#3b2820'}
+  if (believer === 3) { beli = "#00626f",bola = '#00022e'}  if (believer === 4) { beli = "#110022",bola = '#050d25'}
+  if (believer === 5) { beli = "#112222",bola = '#2a293e'}  if (believer === 6) { beli = "#fb5581",bola = '#eeaaff'}
+  if (believer === 7) { beli = "#29304e",bola = '#033500'}  if (believer === 8) { beli = "#483c3c",bola = '#a22452'}
+  if (believer === 9) { beli = "#373e02",bola = '#11574a'}  if (believer === 10) { beli = "#05472a",bola = '#343c4c'}
+  if (believer === 11) { beli = "#d90166",bola = '#490648'}  if (believer === 12) { beli = "#316c6b",bola = '#4d233d'}
+  if (believer === 13) { beli = "#76424e",bola = '#4d233d'}  if (believer === 14) { beli = "#00022e",bola = '#112222'}
+               moviecontainer.style.background = beli
+ })
         middle.append(moviecontainer)
               const clear = document.getElementById('clear')
               clear.addEventListener('click',()=>{
