@@ -18,7 +18,7 @@
             width: 100%;
             max-width: 100%;
             display: grid;
-            grid-template-rows: 80px 600px 800px 600px 600px 600px auto;
+            grid-template-rows: 80px 600px 1200px 600px 600px 600px auto;
             box-sizing: border-box;
             overflow-x: hidden;
         }
@@ -249,18 +249,18 @@
         .biashara-services {
             background-color: #ffffff;
             display: flex;
+            flex-direction: column;
             gap: 30px;
-            padding: 40px;
+            padding: 40px 20px;
             justify-content: center;
-            flex-wrap: wrap;
             align-items: center;
             width: 100%;
             box-sizing: border-box;
         }
 
         .services {
-            width: 400px;
-            height: 400px;
+            width: 360px;
+            height: 360px;
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
@@ -292,7 +292,7 @@
         .services:nth-child(3) { transition-delay: 0.5s; }
 
         .service-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             color: #182848;
             margin-bottom: 20px;
@@ -307,7 +307,7 @@
         }
 
         .service-description {
-            font-size: 16px;
+            font-size: 15px;
             color: #374151;
             opacity: 0;
             transform: translateY(20px);
@@ -490,7 +490,7 @@
 
         @media (max-width: 1024px) {
             .biashara {
-                grid-template-rows: 80px 600px 900px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px 1200px 600px 600px 600px auto;
             }
 
             .biashara-services {
@@ -499,16 +499,16 @@
             }
 
             .services {
-                width: 400px;
-                height: 400px;
+                width: 360px;
+                height: 360px;
             }
 
             .service-title {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .service-description {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .comment {
@@ -604,17 +604,19 @@
             }
 
             .biashara {
-                grid-template-rows: 80px 600px 1000px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px 1400px 600px 600px 600px auto;
             }
 
             .biashara-services {
                 flex-direction: column;
                 align-items: center;
+                padding: 20px;
+                gap: 20px;
             }
 
             .services {
-                width: 400px;
-                height: 400px;
+                width: 360px;
+                height: 360px;
             }
 
             .comment {
@@ -627,7 +629,8 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
 
             .search-bar input {
@@ -641,29 +644,32 @@
 
         @media (max-width: 500px) {
             .biashara {
-                grid-template-rows: 80px 600px 800px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px 1400px 600px 600px 600px auto;
             }
 
             .biashara-services {
                 padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
 
             .services {
-                width: 400px;
-                height: 400px;
+                width: 300px;
+                height: 300px;
             }
 
             .service-title {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .service-description {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .comment {
-                width: 300px;
-                height: 120px;
+                width: 280px;
+                height: 100px;
             }
 
             .comment-profile-pic {
@@ -674,6 +680,11 @@
 
             .comment-text {
                 font-size: 12px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
 
             .search-bar input {
@@ -699,7 +710,7 @@
                         <span class="dropdown-toggle">About</span>
                         <div class="dropdown-menu">
                             <a href="#about-team" data-search="Our Team">Our Team</a>
-                            <a href="#about-mISSION" data-search="Mission">Mission</a>
+                            <a href="#about-mission" data-search="Mission">Mission</a>
                             <a href="#about-history" data-search="History">History</a>
                         </div>
                     </div>
@@ -962,8 +973,8 @@
                 const commentsContainer = document.querySelector('.biashara-comments');
                 const containerWidth = commentsContainer.offsetWidth;
                 const containerHeight = commentsContainer.offsetHeight;
-                const commentWidth = 300;
-                const commentHeight = 120;
+                const commentWidth = window.innerWidth <= 500 ? 280 : 300;
+                const commentHeight = window.innerWidth <= 500 ? 100 : 120;
                 const padding = 20;
                 const maxComments = window.innerWidth <= 500 ? 3 : window.innerWidth <= 768 ? 6 : 10;
                 const positions = [];
