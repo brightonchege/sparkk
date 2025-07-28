@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biashara</title>
-    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
             min-height: 100vh;
-            background-color: #ffffff;
+            background-color: #f9fafb;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
         }
@@ -18,20 +17,18 @@
         .biashara {
             width: 100%;
             max-width: 100%;
-           
             display: grid;
-            grid-template-rows: 80px 570px 700px 500px 600px 600px auto;
-    
+            grid-template-rows: 80px 600px 800px 600px 600px 600px auto;
             box-sizing: border-box;
             overflow-x: hidden;
         }
 
         .biashara-nav {
-            background-color:#93b5e1;
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             display: flex;
             align-items: center;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,21 +42,22 @@
         }
 
         .head {
-            font-size: 26px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: #ffffff;
             margin-right: auto;
+            letter-spacing: 1px;
         }
 
         .nav-content {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .links {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -67,13 +65,14 @@
             color: #ffffff;
             font-size: 16px;
             text-decoration: none;
-            padding: 8px;
+            padding: 10px;
             position: relative;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .links-child:hover {
             color: #f97316;
+            transform: translateY(-2px);
         }
 
         .links-child:hover::after {
@@ -99,27 +98,27 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(75, 108, 183, 0.95);
-            min-width: 180px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            border-radius: 6px;
+            background: rgba(24, 40, 72, 0.95);
+            min-width: 200px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
             z-index: 1000;
-            padding: 8px 0;
-            transform: scale(0.8);
+            padding: 10px 0;
+            transform: scale(0.9);
             opacity: 0;
             transform-origin: top center;
-            animation: jelly 0.5s ease forwards;
+            animation: jelly 0.4s ease forwards;
         }
 
         @keyframes jelly {
-            0% { transform: scale(0.8, 0.8); opacity: 0; }
-            50% { transform: scale(1.2, 0.8); opacity: 0.7; }
+            0% { transform: scale(0.9, 0.9); opacity: 0; }
+            50% { transform: scale(1.1, 0.9); opacity: 0.8; }
             100% { transform: scale(1, 1); opacity: 1; }
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 10px 20px;
+            padding: 12px 20px;
             color: #ffffff;
             text-decoration: none;
             font-size: 15px;
@@ -143,22 +142,29 @@
             display: flex;
             align-items: center;
             background: #ffffff;
-            border-radius: 20px;
-            padding: 5px 10px;
-            margin-left: 10px;
+            border-radius: 25px;
+            padding: 8px 12px;
+            margin-left: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar input {
             border: none;
             outline: none;
-            font-size: 14px;
-            color: #1a252f;
-            width: 150px;
+            font-size: 15px;
+            color: #182848;
+            width: 160px;
+            padding: 5px;
         }
 
         .search-bar i {
             color: #4b6cb7;
             cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .search-bar i:hover {
+            color: #f97316;
         }
 
         .search-results {
@@ -167,56 +173,49 @@
             top: 100%;
             right: 20px;
             background: #ffffff;
-            min-width: 200px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
+            min-width: 220px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
             z-index: 1000;
-            padding: 10px;
-            max-height: 300px;
+            padding: 12px;
+            max-height: 320px;
             overflow-y: auto;
         }
 
         .search-results a {
             display: block;
-            padding: 8px;
-            color: #4b6cb7;
+            padding: 10px;
+            color: #182848;
             text-decoration: none;
             font-size: 14px;
+            transition: background 0.2s ease;
         }
 
         .search-results a:hover {
             background: #f97316;
             color: #ffffff;
+            border-radius: 4px;
         }
 
         .social-nav-links {
             display: flex;
-            gap: 10px;
-            margin-left: 10px;
+            gap: 12px;
+            margin-left: 15px;
         }
 
         .social-nav-links a {
             color: #ffffff;
-            font-size: 16px;
-            transition: color 0.3s ease;
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-nav-links a:hover {
             color: #f97316;
+            transform: translateY(-2px);
         }
 
-
-
-
-
-
-
-
-
-
-
         .biashara-intro {
-            background-color: #f8fafc;
+            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -226,16 +225,17 @@
 
         .pop-words {
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
 
         .word {
-            font-size: 28px;
-            font-weight: 700;
-            color: #4b6cb7;
+            font-size: 32px;
+            font-weight: 800;
+            color: #182848;
             opacity: 0;
-            transform: scale(0.5);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .word:nth-child(2) { transition-delay: 0.2s; }
@@ -246,37 +246,11 @@
             transform: scale(1);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         .biashara-services {
-            background-color: 	#ffffff;
+            background-color: #ffffff;
             display: flex;
-            gap: 20px;
-            padding: 30px;
+            gap: 30px;
+            padding: 40px;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
@@ -287,19 +261,25 @@
         .services {
             width: 400px;
             height: 400px;
-            background: wheat;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.9);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 25px;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
+            border: 1px solid rgba(75, 108, 183, 0.1);
+        }
+
+        .services:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .services.visible {
@@ -312,13 +292,13 @@
         .services:nth-child(3) { transition-delay: 0.5s; }
 
         .service-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: #4b6cb7;
-            margin-bottom: 15px;
+            color: #182848;
+            margin-bottom: 20px;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .services.visible .service-title {
@@ -328,10 +308,11 @@
 
         .service-description {
             font-size: 16px;
-            color: #1a252f;
+            color: #374151;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+            line-height: 1.5;
         }
 
         .services.visible .service-description {
@@ -339,40 +320,35 @@
             transform: translateY(0);
         }
 
-
-
-
-
-
-
-
-
-
-
-
         .biashara-comments {
-            background-color: #f8fafc;
+            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
             position: relative;
-            padding: 20px;
+            padding: 40px;
             width: 100%;
             box-sizing: border-box;
             overflow: hidden;
+            min-height: 600px;
         }
 
         .comment {
             position: absolute;
             background: #ffffff;
-            padding: 15px;
-            width: 250px;
-            height: 100px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            height: 120px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s ease, transform 0.3s ease;
             box-sizing: border-box;
+            border: 1px solid rgba(75, 108, 183, 0.1);
+        }
+
+        .comment:hover {
+            transform: translateY(-5px);
         }
 
         .comment.visible {
@@ -380,16 +356,16 @@
         }
 
         .comment-profile-pic {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: #4b6cb7;
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .comment-content {
@@ -398,79 +374,85 @@
 
         .comment-name {
             font-weight: 600;
-            color: #4b6cb7;
-            margin-bottom: 5px;
+            color: #182848;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
 
         .comment-text {
             font-size: 14px;
-            color: #1a252f;
+            color: #374151;
+            line-height: 1.4;
         }
 
-
-
-
-
-
-
         .biashara-career {
-            background-color: #f8fafc;
+            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
             width: 100%;
             box-sizing: border-box;
         }
 
-
-
-
-
         .biashara-principles {
-            background-color: #f8fafc;
-            padding: 40px 20px;
+            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
+            padding: 50px 30px;
             width: 100%;
             box-sizing: border-box;
             text-align: left;
         }
 
+        .principles-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #182848;
+            margin-bottom: 20px;
+        }
 
+        .principles-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-
-
-        
+        .principle-item {
+            font-size: 16px;
+            color: #374151;
+            line-height: 1.5;
+        }
 
         .biashara-footer {
-            background-color:#2c2929;
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #182848 0%, #2c2929 100%);
+            padding: 50px 30px;
             color: #f97316;
             width: 100%;
             box-sizing: border-box;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding-bottom: 20px;
+            gap: 30px;
+            padding-bottom: 30px;
             box-sizing: border-box;
         }
 
         .footer-column {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .footer-column h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
         }
 
         .footer-column a {
-            color: #ffffff;
+            color: #d1d5db;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             transition: color 0.3s ease;
         }
 
@@ -480,62 +462,62 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
 
         .social-links a {
-            font-size: 20px;
+            font-size: 22px;
             color: #4b6cb7;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-links a:hover {
             color: #f97316;
+            transform: translateY(-2px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(75, 108, 183, 0.3);
+            padding-top: 30px;
+            border-top: 1px solid rgba(75, 108, 183, 0.2);
         }
 
         .footer-bottom p {
             font-size: 14px;
+            color: #d1d5db;
             margin: 5px 0;
         }
 
         @media (max-width: 1024px) {
             .biashara {
-                grid-template-rows: 80px 500px 800px 500px 500px 500px auto;
+                grid-template-rows: 80px 600px 900px 600px 600px 600px auto;
+            }
+
+            .biashara-services {
+                gap: 20px;
+                padding: 30px;
             }
 
             .services {
-                width: 300px;
-                height: 300px;
+                width: 400px;
+                height: 400px;
             }
 
             .service-title {
-                font-size: 20px;
+                font-size: 24px;
             }
 
             .service-description {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .comment {
-                width: 200px;
-                height: 90px;
+                width: 300px;
+                height: 120px;
             }
 
             .comment-text {
-                font-size: 12px;
-            }
-
-            .principles-title {
-                font-size: 20px;
-            }
-
-            .principle-item {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .footer-content {
@@ -543,7 +525,7 @@
             }
 
             .search-bar input {
-                width: 100px;
+                width: 120px;
             }
         }
 
@@ -552,10 +534,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: 30px;
-                height: 20px;
+                width: 32px;
+                height: 22px;
                 cursor: pointer;
-                margin-left: 10px;
+                margin-left: 12px;
             }
 
             .hamburger span {
@@ -584,9 +566,9 @@
                 top: 80px;
                 left: 0;
                 width: 100%;
-                background: #4b6cb7;
-                padding: 15px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                background: #182848;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                 align-items: flex-start;
                 box-sizing: border-box;
             }
@@ -602,13 +584,13 @@
             }
 
             .links-child {
-                padding: 12px;
+                padding: 14px;
                 color: #ffffff;
             }
 
             .dropdown-menu {
                 position: static;
-                background: rgba(75, 108, 183, 0.95);
+                background: rgba(24, 40, 72, 0.95);
                 box-shadow: none;
                 transform: none;
                 opacity: 1;
@@ -622,38 +604,26 @@
             }
 
             .biashara {
-                grid-template-rows: 80px 400px 900px 400px 400px 400px auto;
+                grid-template-rows: 80px 600px 1000px 600px 600px 600px auto;
+            }
+
+            .biashara-services {
+                flex-direction: column;
+                align-items: center;
             }
 
             .services {
-                width: 80%;
-                height: 250px;
+                width: 400px;
+                height: 400px;
             }
 
             .comment {
-                width: 180px;
-                height: 80px;
+                width: 300px;
+                height: 120px;
             }
 
             .comment-text {
-                font-size: 11px;
-            }
-
-            .comment:nth-child(n+7) {
-                display: none;
-            }
-
-            .principles-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .principles-title {
-                font-size: 18px;
-            }
-
-            .principle-item {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .footer-content {
@@ -661,61 +631,53 @@
             }
 
             .search-bar input {
-                width: 80px;
+                width: 100px;
             }
 
             .social-nav-links {
-                margin-top: 10px;
+                margin-top: 12px;
             }
         }
 
         @media (max-width: 500px) {
             .biashara {
-                grid-template-rows: 80px 350px 700px 350px 350px 350px auto;
+                grid-template-rows: 80px 600px 800px 600px 600px 600px auto;
+            }
+
+            .biashara-services {
+                padding: 20px;
             }
 
             .services {
-                width: 90%;
-                height: 200px;
+                width: 400px;
+                height: 400px;
             }
 
             .service-title {
-                font-size: 18px;
+                font-size: 22px;
             }
 
             .service-description {
-                font-size: 12px;
-            }
-
-            .comment {
-                width: 150px;
-                height: 70px;
-            }
-
-            .comment-profile-pic {
-                width: 30px;
-                height: 30px;
                 font-size: 14px;
             }
 
-            .comment-text {
-                font-size: 10px;
+            .comment {
+                width: 300px;
+                height: 120px;
             }
 
-            .comment:nth-child(n+4) {
-                display: none;
-            }
-
-            .principles-title {
+            .comment-profile-pic {
+                width: 40px;
+                height: 40px;
                 font-size: 16px;
             }
 
-            .principle-item {
+            .comment-text {
                 font-size: 12px;
             }
 
             .search-bar input {
-                width: 60px;
+                width: 80px;
             }
         }
     </style>
@@ -737,7 +699,7 @@
                         <span class="dropdown-toggle">About</span>
                         <div class="dropdown-menu">
                             <a href="#about-team" data-search="Our Team">Our Team</a>
-                            <a href="#about-mission" data-search="Mission">Mission</a>
+                            <a href="#about-mISSION" data-search="Mission">Mission</a>
                             <a href="#about-history" data-search="History">History</a>
                         </div>
                     </div>
@@ -865,12 +827,14 @@
             </div>
         </div>
         <div class="biashara-career"></div>
-       
-        
         <div class="biashara-principles">
-          
+            <h2 class="principles-title">Our Principles</h2>
+            <div class="principles-content">
+                <p class="principle-item">Integrity: We uphold the highest standards of honesty.</p>
+                <p class="principle-item">Innovation: We drive progress through creative solutions.</p>
+                <p class="principle-item">Excellence: We strive for quality in all we do.</p>
+            </div>
         </div>
-       
         <div class="biashara-footer">
             <div class="footer-content">
                 <div class="footer-column">
@@ -911,7 +875,7 @@
             </div>
         </div>
     </div>
-    <script >
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
             const nav = document.querySelector('.biashara-nav');
@@ -998,9 +962,9 @@
                 const commentsContainer = document.querySelector('.biashara-comments');
                 const containerWidth = commentsContainer.offsetWidth;
                 const containerHeight = commentsContainer.offsetHeight;
-                const commentWidth = window.innerWidth <= 500 ? 150 : window.innerWidth <= 768 ? 180 : 250;
-                const commentHeight = window.innerWidth <= 500 ? 70 : window.innerWidth <= 768 ? 80 : 100;
-                const padding = 10;
+                const commentWidth = 300;
+                const commentHeight = 120;
+                const padding = 20;
                 const maxComments = window.innerWidth <= 500 ? 3 : window.innerWidth <= 768 ? 6 : 10;
                 const positions = [];
                 const commentArray = shuffleArray([...comments]);
