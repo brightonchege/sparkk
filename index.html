@@ -18,7 +18,7 @@
             width: 100%;
             max-width: 100%;
             display: grid;
-            grid-template-rows: 80px 600px 800px 600px 600px 600px auto;
+            grid-template-rows: 80px 600px auto 600px 600px auto auto;
             box-sizing: border-box;
             overflow-x: hidden;
         }
@@ -27,7 +27,7 @@
             background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
             display: flex;
             align-items: center;
-            padding: 15px 30px;
+            padding: 15px 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
@@ -52,12 +52,12 @@
         .nav-content {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -144,7 +144,6 @@
             background: #ffffff;
             border-radius: 25px;
             padding: 8px 12px;
-            margin-left: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -200,7 +199,6 @@
         .social-nav-links {
             display: flex;
             gap: 12px;
-            margin-left: 15px;
         }
 
         .social-nav-links a {
@@ -251,7 +249,7 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            padding: 40px;
+            padding: 40px 20px;
             align-items: center;
             width: 100%;
             box-sizing: border-box;
@@ -271,15 +269,18 @@
         .biashara-services.visible .services-title {
             opacity: 1;
             transform: translateY(0);
+            transition-delay: 0s;
         }
 
         .services-container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            max-width: 1280px;
         }
 
         .services {
@@ -311,9 +312,9 @@
             transform: scale(1);
         }
 
-        .services:nth-child(1) { transition-delay: 0.1s; }
-        .services:nth-child(2) { transition-delay: 0.3s; }
-        .services:nth-child(3) { transition-delay: 0.5s; }
+        .services:nth-child(1) { transition-delay: 0.2s; }
+        .services:nth-child(2) { transition-delay: 0.4s; }
+        .services:nth-child(3) { transition-delay: 0.6s; }
 
         .service-title {
             font-size: 24px;
@@ -328,6 +329,7 @@
         .services.visible .service-title {
             opacity: 1;
             transform: translateY(0);
+            transition-delay: 0.2s;
         }
 
         .service-description {
@@ -342,6 +344,7 @@
         .services.visible .service-description {
             opacity: 1;
             transform: translateY(0);
+            transition-delay: 0.3s;
         }
 
         .biashara-comments {
@@ -450,16 +453,33 @@
             width: 100%;
             box-sizing: border-box;
             text-align: left;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .principles-content {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .principles-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-width: 0;
         }
 
         .principles-title {
             font-size: 28px;
             font-weight: 700;
-            color: #182848;
+            color: #f97316;
             margin-bottom: 20px;
         }
 
-        .principles-content {
+        .principles-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -467,7 +487,18 @@
 
         .principle-item {
             font-size: 16px;
-            color: #374151;
+            color: #f97316;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .principle-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #f97316;
+            font-size: 20px;
             line-height: 1.5;
         }
 
@@ -549,16 +580,42 @@
 
         @media (max-width: 1024px) {
             .biashara {
-                grid-template-rows: 80px 600px 900px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px auto 600px 600px auto auto;
+            }
+
+            .biashara-nav {
+                padding: 12px 15px;
+            }
+
+            .head {
+                font-size: 24px;
+            }
+
+            .nav-content {
+                gap: 15px;
+            }
+
+            .links {
+                gap: 15px;
+            }
+
+            .links-child {
+                font-size: 15px;
+                padding: 8px;
+            }
+
+            .search-bar input {
+                width: 120px;
+                font-size: 14px;
             }
 
             .biashara-services {
-                padding: 30px;
+                padding: 30px 15px;
             }
 
             .services {
-                width: 360px;
-                height: 360px;
+                width: 320px;
+                height: 320px;
             }
 
             .service-title {
@@ -578,12 +635,13 @@
                 font-size: 12px;
             }
 
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+            .principles-content {
+                flex-direction: column;
+                gap: 30px;
             }
 
-            .search-bar input {
-                width: 120px;
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -592,10 +650,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: 32px;
-                height: 22px;
+                width: 28px;
+                height: 20px;
                 cursor: pointer;
-                margin-left: 12px;
+                margin-left: 10px;
             }
 
             .hamburger span {
@@ -625,7 +683,7 @@
                 left: 0;
                 width: 100%;
                 background: #182848;
-                padding: 20px;
+                padding: 15px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                 align-items: flex-start;
                 box-sizing: border-box;
@@ -639,10 +697,12 @@
                 flex-direction: column;
                 width: 100%;
                 align-items: flex-start;
+                gap: 10px;
             }
 
             .links-child {
-                padding: 14px;
+                padding: 12px;
+                font-size: 15px;
                 color: #ffffff;
             }
 
@@ -661,17 +721,36 @@
                 display: block;
             }
 
+            .search-bar {
+                margin-left: 10px;
+                padding: 6px 10px;
+            }
+
+            .search-bar input {
+                width: 100px;
+                font-size: 14px;
+            }
+
+            .social-nav-links {
+                margin-top: 10px;
+                gap: 10px;
+            }
+
+            .social-nav-links a {
+                font-size: 16px;
+            }
+
             .biashara {
-                grid-template-rows: 80px 600px 1400px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px auto 600px 600px auto auto;
             }
 
             .biashara-services {
-                padding: 20px;
+                padding: 20px 10px;
             }
 
             .services {
-                width: 360px;
-                height: 360px;
+                width: 300px;
+                height: 300px;
             }
 
             .comment {
@@ -687,28 +766,60 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-
-            .search-bar input {
-                width: 100px;
-            }
-
-            .social-nav-links {
-                margin-top: 12px;
-            }
         }
 
         @media (max-width: 500px) {
             .biashara {
-                grid-template-rows: 80px 600px 1400px 600px 600px 600px auto;
+                grid-template-rows: 80px 600px auto 600px 600px auto auto;
+            }
+
+            .biashara-nav {
+                padding: 10px 12px;
+            }
+
+            .head {
+                font-size: 20px;
+            }
+
+            .hamburger {
+                width: 24px;
+                height: 18px;
+            }
+
+            .hamburger span {
+                height: 2px;
+            }
+
+            .nav-content {
+                top: 70px;
+                padding: 12px;
+            }
+
+            .links-child {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .search-bar {
+                padding: 5px 8px;
+            }
+
+            .search-bar input {
+                width: 80px;
+                font-size: 13px;
+            }
+
+            .social-nav-links a {
+                font-size: 14px;
             }
 
             .biashara-services {
-                padding: 20px;
+                padding: 20px 10px;
             }
 
             .services {
-                width: 300px;
-                height: 300px;
+                width: 280px;
+                height: 280px;
             }
 
             .services-title {
@@ -721,11 +832,6 @@
 
             .service-description {
                 font-size: 13px;
-            }
-
-            .comments-title {
-                font-size: 28px;
-                padding: 15px 30px;
             }
 
             .comment {
@@ -750,10 +856,6 @@
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
-            }
-
-            .search-bar input {
-                width: 80px;
             }
         }
     </style>
@@ -908,11 +1010,28 @@
         </div>
         <div class="biashara-career"></div>
         <div class="biashara-principles">
-            <h2 class="principles-title">Our Principles</h2>
             <div class="principles-content">
-                <p class="principle-item">Integrity: We uphold the highest standards of honesty.</p>
-                <p class="principle-item">Innovation: We drive progress through creative solutions.</p>
-                <p class="principle-item">Excellence: We strive for quality in all we do.</p>
+                <div class="principles-column">
+                    <h2 class="principles-title">Core Values</h2>
+                    <div class="principles-list">
+                        <p>Guided by godly and cooperative principles, the Sacco's core values are:</p>
+                        <p class="principle-item">Integrity</p>
+                        <p class="principle-item">Transparency</p>
+                        <p class="principle-item">Member focus</p>
+                        <p class="principle-item">Professionalism</p>
+                    </div>
+                </div>
+                <div class="principles-column">
+                    <h2 class="principles-title">Our Principles</h2>
+                    <div class="principles-list">
+                        <p class="principle-item">Open and voluntary membership</p>
+                        <p class="principle-item">Autonomy and independence</p>
+                        <p class="principle-item">Democratic member control</p>
+                        <p class="principle-item">Education, information and training and economic participation of members</p>
+                        <p class="principle-item">Cooperation among cooperative members</p>
+                        <p class="principle-item">Concern for community in general</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="biashara-footer">
@@ -1051,7 +1170,6 @@
                 const commentHeight = window.innerWidth <= 500 ? 80 : 90;
                 const titleWidth = commentsTitle.offsetWidth;
                 const titleHeight = commentsTitle.offsetHeight;
-                const titleRect = commentsTitle.getBoundingClientRect();
                 const padding = 20;
                 const maxComments = window.innerWidth <= 500 ? 5 : window.innerWidth <= 768 ? 6 : 10;
                 const positions = [];
