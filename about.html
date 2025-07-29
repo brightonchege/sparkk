@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Biashara Community Sacco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin:  0;
+            min-height:  100vh;
+            background-color:  #f9fafb;
+            font-family:  -apple-system,  BlinkMacSystemFont,  'Segoe  UI',  Roboto,  sans-serif;
+            overflow-x:  hidden;
+        }
+
+        .biashara {
+            width:  100%;
+            max-width:  100%;
+            display:  flex;
+            flex-direction:  column;
+            box-sizing:  border-box;
+            overflow-x:  hidden;
+        }
+
+        .biashara-nav {
+            background:  linear-gradient(135deg,  #4b6cb7  0%,  #182848  100%);
+            display:  flex;
+            align-items:  center;
+            padding:  15px  20px;
+            box-shadow:  0  4px  10px  rgba(0,  0,  0,  0.15);
+            position:  sticky;
+            top:  0;
+            z-index:  1000;
+            transition:  transform  0.3s  ease;
+            width:  100%;
+            box-sizing:  border-box;
+        }
+
+        .biashara-nav.hidden {
+            transform:  translateY(-100%);
+        }
+
+        .head {
+            font-size:  28px;
+            font-weight:  800;
+            color:  #ffffff;
+            margin-right:  auto;
+            letter-spacing:  1px;
+        }
+
+        .nav-content {
+            display:  flex;
+            align-items:  center;
+            gap:  20px;
+        }
+
+        .links {
+            display:  flex;
+            gap:  20px;
+            align-items:  center;
+        }
+
+        .links-child {
+            color:  #ffffff;
+            font-size:  16px;
+            text-decoration:  none;
+            padding:  10px;
+            position:  relative;
+            transition:  color  0.3s  ease,  transform  0.2s  ease;
+        }
+
+        .links-child:hover {
+            color:  #f97316;
+            transform:  translateY(-2px);
+        }
+
+        .links-child:hover::after {
+            content:  '';
+            position:  absolute;
+            width:  100%;
+            height:  2px;
+            background:  #f97316;
+            bottom:  0;
+            left:  0;
+        }
+
+        .dropdown {
+            position:  relative;
+        }
+
+        .dropdown-toggle {
+            cursor:  pointer;
+        }
+
+        .dropdown-menu {
+            display:  none;
+            position:  absolute;
+            top:  100%;
+            left:  0;
+            background:  rgba(24,  40,  72,  0.95);
+            min-width:  200px;
+            box-shadow:  0  6px  15px  rgba(0,  0,  0,  0.2);
+            border-radius:  8px;
+            z-index:  1000;
+            padding:  10px  0;
+            transform:  scale(0.9);
+            opacity:  0;
+            transform-origin:  top  center;
+            animation:  jelly  0.4s  ease  forwards;
+        }
+
+        @keyframes  jelly {
+            0%  {  transform:  scale(0.9,  0.9);  opacity:  0;  }
+            50%  {  transform:  scale(1.1,  0.9);  opacity:  0.8;  }
+            100%  {  transform:  scale(1,  1);  opacity:  1;  }
+        }
+
+        .dropdown-menu  a {
+            display:  block;
+            padding:  12px  20px;
+            color:  #ffffff;
+            text-decoration:  none;
+            font-size:  15px;
+            transition:  background  0.2s  ease,  color  0.2s  ease;
+        }
+
+        .dropdown-menu  a:hover {
+            background:  #f97316;
+            color:  #ffffff;
+        }
+
+        .dropdown:hover  .dropdown-menu {
+            display:  block;
+        }
+
+        .nav-toggle,  .hamburger {
+            display:  none;
+        }
+
+        .search-bar {
+            display:  flex;
+            align-items:  center;
+            background:  #ffffff;
+            border-radius:  25px;
+            padding:  8px  12px;
+            box-shadow:  0  2px  5px  rgba(0,  0,  0,  0.1);
+        }
+
+        .search-bar  input {
+            border:  none;
+            outline:  none;
+            font-size:  15px;
+            color:  #182848;
+            width:  160px;
+            padding:  5px;
+        }
+
+        .search-bar  i {
+            color:  #4b6cb7;
+            cursor:  pointer;
+            transition:  color  0.3s  ease;
+        }
+
+        .search-bar  i:hover {
+            color:  #f97316;
+        }
+
+        .search-results {
+            display:  none;
+            position:  absolute;
+            top:  100%;
+            right:  20px;
+            background:  #ffffff;
+            min-width:  220px;
+            box-shadow:  0  6px  15px  rgba(0,  0,  0,  0.15);
+            border-radius:  8px;
+            z-index:  1000;
+            padding:  12px;
+            max-height:  320px;
+            overflow-y:  auto;
+        }
+
+        .search-results  a {
+            display:  block;
+            padding:  10px;
+            color:  #182848;
+            text-decoration:  none;
+            font-size:  14px;
+            transition:  background  0.2s  ease;
+        }
+
+        .search-results  a:hover {
+            background:  #f97316;
+            color:  #ffffff;
+            border-radius:  4px;
+        }
+
+        .social-nav-links {
+            display:  flex;
+            gap:  12px;
+        }
+
+        .social-nav-links  a {
+            color:  #ffffff;
+            font-size:  18px;
+            transition:  color  0.3s  ease,  transform  0.2s  ease;
+        }
+
+        .social-nav-links  a:hover {
+            color:  #f97316;
+            transform:  translateY(-2px);
+        }
+
+        .biashara-about {
+            background:  linear-gradient(180deg,  #f8fafc  0%,  #e5e7eb  100%);
+            padding:  60px  20px;
+            width:  100%;
+            box-sizing:  border-box;
+            display:  flex;
+            flex-direction:  column;
+            align-items:  center;
+            gap:  40px;
+        }
+
+        .about-title {
+            font-size:  36px;
+            font-weight:  800;
+            color:  #182848;
+            text-align:  center;
+            text-shadow:  0  2px  4px  rgba(0,  0,  0,  0.1);
+            position:  static;
+            z-index:  10;
+        }
+
+        .about-section {
+            max-width:  1280px;
+            width:  100%;
+            display:  flex;
+            flex-direction:  column;
+            gap:  20px;
+            opacity:  0;
+            transform:  translateY(20px);
+            transition:  opacity  0.6s  ease,  transform  0.6s  ease;
+        }
+
+        .about-section.visible {
+            opacity:  1;
+            transform:  translateY(0);
+        }
+
+        .about-section  h2 {
+            font-size:  28px;
+            font-weight:  700;
+            color:  #182848;
+            text-align:  center;
+            text-shadow:  0  2px  4px  rgba(0,  0,  0,  0.1);
+        }
+
+        .about-section  p {
+            font-size:  16px;
+            color:  #374151;
+            line-height:  1.6;
+            text-align:  center;
+        }
+
+        .about-section  ul {
+            list-style:  none;
+            padding:  0;
+            display:  flex;
+            flex-direction:  column;
+            gap:  10px;
+            max-width:  800px;
+            margin:  0  auto;
+        }
+
+        .about-section  li {
+            font-size:  16px;
+            color:  #374151;
+            line-height:  1.6;
+            position:  relative;
+            padding-left:  25px;
+            text-align:  left;
+        }
+
+        .about-section  li::before {
+            content:  '•';
+            position:  absolute;
+            left:  0;
+            color:  #f97316;
+            font-size:  20px;
+            line-height:  1.6;
+        }
+
+        .map-placeholder {
+            width:  100%;
+            max-width:  800px;
+            height:  400px;
+            background:  #e5e7eb;
+            border:  1px  solid  rgba(75,  108,  183,  0.2);
+            border-radius:  8px;
+            display:  flex;
+            align-items:  center;
+            justify-content:  center;
+            font-size:  16px;
+            color:  #374151;
+            text-align:  center;
+            margin:  0  auto;
+            opacity:  0;
+            transform:  translateY(20px);
+            transition:  opacity  0.6s  ease,  transform  0.6s  ease;
+        }
+
+        .map-placeholder.visible {
+            opacity:  1;
+            transform:  translateY(0);
+        }
+
+        .biashara-principles {
+            background:  linear-gradient(180deg,  #f8fafc  0%,  #e5e7eb  100%);
+            padding:  50px  30px;
+            width:  100%;
+            box-sizing:  border-box;
+            text-align:  left;
+            max-width:  1280px;
+            margin:  0  auto;
+        }
+
+        .principles-content {
+            display:  flex;
+            flex-direction:  row;
+            gap:  20px;
+            width:  100%;
+        }
+
+        .principles-column {
+            flex:  1;
+            display:  flex;
+            flex-direction:  column;
+            gap:  15px;
+            min-width:  0;
+        }
+
+        .principles-title {
+            font-size:  28px;
+            font-weight:  700;
+            color:  #f97316;
+            margin-bottom:  20px;
+        }
+
+        .principles-list {
+            display:  flex;
+            flex-direction:  column;
+            gap:  10px;
+        }
+
+        .principle-item {
+            font-size:  16px;
+            color:  #f97316;
+            line-height:  1.5;
+            position:  relative;
+            padding-left:  25px;
+        }
+
+        .principle-item::before {
+            content:  '•';
+            position:  absolute;
+            left:  0;
+            color:  #f97316;
+            font-size:  20px;
+            line-height:  1.5;
+        }
+
+        .biashara-footer {
+            background:  linear-gradient(135deg,  #182848  0%,  #2c2929  100%);
+            padding:  50px  30px;
+            color:  #f97316;
+            width:  100%;
+            box-sizing:  border-box;
+        }
+
+        .footer-content {
+            max-width:  1280px;
+            margin:  0  auto;
+            display:  grid;
+            grid-template-columns:  repeat(4,  1fr);
+            gap:  30px;
+            padding-bottom:  30px;
+            box-sizing:  border-box;
+        }
+
+        .footer-column {
+            display:  flex;
+            flex-direction:  column;
+            gap:  12px;
+        }
+
+        .footer-column  h4 {
+            font-size:  18px;
+            font-weight:  700;
+            margin-bottom:  12px;
+            color:  #ffffff;
+        }
+
+        .footer-column  a {
+            color:  #d1d5db;
+            text-decoration:  none;
+            font-size:  15px;
+            transition:  color  0.3s  ease;
+        }
+
+        .footer-column  a:hover {
+            color:  #f97316;
+        }
+
+        .social-links {
+            display:  flex;
+            gap:  18px;
+        }
+
+        .social-links  a {
+            font-size:  22px;
+            color:  #4b6cb7;
+            transition:  color  0.3s  ease,  transform  0.2s  ease;
+        }
+
+        .social-links  a:hover {
+            color:  #f97316;
+            transform:  translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align:  center;
+            padding-top:  30px;
+            border-top:  1px  solid  rgba(75,  108,  183,  0.2);
+            display:  flex;
+            flex-direction:  column;
+            align-items:  center;
+            justify-content:  center;
+        }
+
+        .footer-bottom  p {
+            font-size:  14px;
+            color:  #d1d5db;
+            margin:  5px  0;
+            width:  100%;
+            text-align:  center;
+        }
+
+        @media  (max-width:  1024px) {
+            .biashara-nav {
+                padding:  12px  15px;
+            }
+
+            .head {
+                font-size:  24px;
+            }
+
+            .nav-content {
+                gap:  15px;
+            }
+
+            .links {
+                gap:  15px;
+            }
+
+            .links-child {
+                font-size:  15px;
+                padding:  8px;
+            }
+
+            .search-bar  input {
+                width:  120px;
+                font-size:  14px;
+            }
+
+            .biashara-about {
+                padding:  60px  15px;
+            }
+
+            .about-title {
+                font-size:  32px;
+            }
+
+            .about-section  h2 {
+                font-size:  24px;
+            }
+
+            .about-section  p,  .about-section  li {
+                font-size:  15px;
+            }
+
+            .map-placeholder {
+                height:  300px;
+            }
+
+            .principles-content {
+                flex-direction:  column;
+                gap:  20px;
+            }
+
+            .footer-content {
+                grid-template-columns:  repeat(2,  1fr);
+            }
+        }
+
+        @media  (max-width:  768px) {
+            .hamburger {
+                display:  flex;
+                flex-direction:  column;
+                justify-content:  space-between;
+                width:  28px;
+                height:  20px;
+                cursor:  pointer;
+                margin-left:  10px;
+            }
+
+            .hamburger  span {
+                background:  #ffffff;
+                height:  3px;
+                border-radius:  2px;
+                transition:  all  0.3s  ease;
+            }
+
+            .nav-toggle:checked  +  .hamburger  span:nth-child(1) {
+                transform:  rotate(45deg)  translate(5px,  5px);
+            }
+
+            .nav-toggle:checked  +  .hamburger  span:nth-child(2) {
+                opacity:  0;
+            }
+
+            .nav-toggle:checked  +  .hamburger  span:nth-child(3) {
+                transform:  rotate(-45deg)  translate(7px,  -7px);
+            }
+
+            .nav-content {
+                display:  none;
+                flex-direction:  column;
+                position:  absolute;
+                top:  80px;
+                left:  0;
+                width:  100%;
+                background:  #182848;
+                padding:  15px;
+                box-shadow:  0  4px  12px  rgba(0,  0,  0,  0.15);
+                align-items:  flex-start;
+                box-sizing:  border-box;
+            }
+
+            .nav-toggle:checked  ~  .nav-content {
+                display:  flex;
+            }
+
+            .links {
+                flex-direction:  column;
+                width:  100%;
+                align-items:  flex-start;
+                gap:  10px;
+            }
+
+            .links-child {
+                padding:  12px;
+                font-size:  15px;
+                color:  #ffffff;
+            }
+
+            .dropdown-menu {
+                position:  static;
+                background:  rgba(24,  40,  72,  0.95);
+                box-shadow:  none;
+                transform:  none;
+                opacity:  1;
+                display:  none;
+                border-radius:  0;
+                animation:  none;
+            }
+
+            .dropdown.active  .dropdown-menu {
+                display:  block;
+            }
+
+            .search-bar {
+                margin-left:  10px;
+                padding:  6px  10px;
+            }
+
+            .search-bar  input {
+                width:  100px;
+                font-size:  14px;
+            }
+
+            .social-nav-links {
+                margin-top:  10px;
+                gap:  10px;
+            }
+
+            .social-nav-links  a {
+                font-size:  16px;
+            }
+
+            .biashara-about {
+                padding:  60px  10px;
+            }
+
+            .about-title {
+                font-size:  30px;
+            }
+
+            .about-section  h2 {
+                font-size:  22px;
+            }
+
+            .about-section  p,  .about-section  li {
+                font-size:  14px;
+            }
+
+            .map-placeholder {
+                height:  250px;
+            }
+
+            .footer-content {
+                grid-template-columns:  repeat(2,  1fr);
+                gap:  20px;
+            }
+        }
+
+        @media  (max-width:  500px) {
+            .biashara-nav {
+                padding:  10px  12px;
+            }
+
+            .head {
+                font-size:  20px;
+            }
+
+            .hamburger {
+                width:  24px;
+                height:  18px;
+            }
+
+            .hamburger  span {
+                height:  2px;
+            }
+
+            .nav-content {
+                top:  70px;
+                padding:  12px;
+            }
+
+            .links-child {
+                font-size:  14px;
+                padding:  10px;
+            }
+
+            .search-bar {
+                padding:  5px  8px;
+            }
+
+            .search-bar  input {
+                width:  80px;
+                font-size:  13px;
+            }
+
+            .social-nav-links  a {
+                font-size:  14px;
+            }
+
+            .biashara-about {
+                padding:  60px  10px;
+            }
+
+            .about-title {
+                font-size:  28px;
+            }
+
+            .about-section  h2 {
+                font-size:  20px;
+            }
+
+            .about-section  p,  .about-section  li {
+                font-size:  13px;
+            }
+
+            .map-placeholder {
+                height:  200px;
+            }
+
+            .footer-content {
+                grid-template-columns:  repeat(2,  1fr);
+                gap:  15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="biashara">
+        <div class="biashara-nav">
+            <div class="head">Biashara</div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-content">
+                <div class="links">
+                    <a class="links-child" href="index.html#home" data-search="Home">Home</a>
+                    <div class="links-child dropdown">
+                        <span class="dropdown-toggle">About</span>
+                        <div class="dropdown-menu">
+                            <a href="#about-team" data-search="Our Team">Our Team</a>
+                            <a href="#about-mission" data-search="Mission">Mission</a>
+                            <a href="#about-history" data-search="History">History</a>
+                        </div>
+                    </div>
+                    <div class="links-child dropdown">
+                        <span class="dropdown-toggle">Services</span>
+                        <div class="dropdown-menu">
+                            <a href="index.html#services-consulting" data-search="Consulting">Consulting</a>
+                            <a href="index.html#services-support" data-search="Support">Support</a>
+                            <a href="index.html#services-training" data-search="Training">Training</a>
+                        </div>
+                    </div>
+                    <div class="links-child dropdown">
+                        <span class="dropdown-toggle">Products</span>
+                        <div class="dropdown-menu">
+                            <a href="index.html#products-software" data-search="Software">Software</a>
+                            <a href="index.html#products-hardware" data-search="Hardware">Hardware</a>
+                            <a href="index.html#products-solutions" data-search="Solutions">Solutions</a>
+                        </div>
+                    </div>
+                    <a class="links-child" href="index.html#contact" data-search="Contact">Contact</a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." id="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="search-results" id="search-results"></div>
+                <div class="social-nav-links">
+                    <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/biashara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="biashara-about">
+            <h1 class="about-title">About Us</h1>
+            <div class="about-section" id="about-history">
+                <h2>Birth and Registration</h2>
+                <p>Biashara Community Sacco was established as a community-based Sacco in Ruiru sub-county and its environs by shareholders of Neo-Horizon Holding Ltd, a company of born-again Christians. It was officially registered on 20th May 2010 with the Commissioner for Cooperative Development under certificate No. CS/12574 and commenced operations on 1st June 2010.</p>
+            </div>
+            <div class="about-section" id="about-mission">
+                <h2>Mission</h2>
+                <p>The mission of Biashara Community Sacco is to empower economically active people within its areas of operation, with particular emphasis on those running small and medium-scale businesses.</p>
+            </div>
+            <div class="about-section">
+                <h2>Motto</h2>
+                <p>Boresha Maisha (Making life better)</p>
+            </div>
+            <div class="about-section">
+                <h2>Objectives of Biashara Community Sacco</h2>
+                <ul>
+                    <li>Encourage thrift among community members living in Ruiru sub-county and its environs by affording them an opportunity for accumulating savings.</li>
+                    <li>Create a source of funds for credit, which shall be lent to members at fair and reasonable rates of interest.</li>
+                    <li>Provide an opportunity for each member to grow their business, thereby improving their respective economic and social conditions.</li>
+                </ul>
+            </div>
+            <div class="about-section">
+                <h2>Our Location</h2>
+                <div class="map-placeholder">Map Placeholder: Embed a map of Ruiru sub-county here (e.g., Google Maps iframe or static image).</div>
+            </div>
+        </div>
+        <div class="biashara-principles">
+            <div class="principles-content">
+                <div class="principles-column">
+                    <h2 class="principles-title">Core Values</h2>
+                    <div class="principles-list">
+                        <p>Guided by godly and cooperative principles, the Sacco's core values are:</p>
+                        <p class="principle-item">Integrity</p>
+                        <p class="principle-item">Transparency</p>
+                        <p class="principle-item">Member focus</p>
+                        <p class="principle-item">Professionalism</p>
+                    </div>
+                </div>
+                <div class="principles-column">
+                    <h2 class="principles-title">Our Principles</h2>
+                    <div class="principles-list">
+                        <p class="principle-item">Open and voluntary membership</p>
+                        <p class="principle-item">Autonomy and independence</p>
+                        <p class="principle-item">Democratic member control</p>
+                        <p class="principle-item">Education, information and training and economic participation of members</p>
+                        <p class="principle-item">Cooperation among cooperative members</p>
+                        <p class="principle-item">Concern for community in general</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="biashara-footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>About Biashara</h4>
+                    <a href="#about-mission" data-search="Mission">Our Mission</a>
+                    <a href="#about-team" data-search="Our Team">Our Team</a>
+                    <a href="#about-history" data-search="History">Company History</a>
+                    <a href="index.html#careers" data-search="Careers">Careers</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <a href="index.html#services-consulting" data-search="Consulting">Consulting</a>
+                    <a href="index.html#services-support" data-search="Support">Support</a>
+                    <a href="index.html#services-training" data-search="Training">Training</a>
+                    <a href="index.html#services-custom" data-search="Custom Solutions">Custom Solutions</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="index.html#faq" data-search="FAQ">FAQ</a>
+                    <a href="index.html#contact" data-search="Contact">Contact Us</a>
+                    <a href="index.html#terms" data-search="Terms of Service">Terms of Service</a>
+                    <a href="index.html#privacy" data-search="Privacy Policy">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <p>Email: contact@biashara.com</p>
+                    <p>Phone: +254 123 456 789</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/biashara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Biashara Inc. | 123 Business Avenue, Nairobi, Kenya</p>
+                <p>© 2025 Biashara Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            const nav = document.querySelector('.biashara-nav');
+            const navToggle = document.getElementById('nav-toggle');
+            const aboutSections = document.querySelectorAll('.about-section');
+            const mapPlaceholder = document.querySelector('.map-placeholder');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            let lastScroll = 0;
+
+            const searchableItems = [
+                { name: 'Home', href: 'index.html#home' },
+                { name: 'Our Team', href: '#about-team' },
+                { name: 'Mission', href: '#about-mission' },
+                { name: 'History', href: '#about-history' },
+                { name: 'Consulting', href: 'index.html#services-consulting' },
+                { name: 'Support', href: 'index.html#services-support' },
+                { name: 'Training', href: 'index.html#services-training' },
+                { name: 'Software', href: 'index.html#products-software' },
+                { name: 'Hardware', href: 'index.html#products-hardware' },
+                { name: 'Solutions', href: 'index.html#products-solutions' },
+                { name: 'Contact', href: 'index.html#contact' },
+                { name: 'Careers', href: 'index.html#careers' },
+                { name: 'Custom Solutions', href: 'index.html#services-custom' },
+                { name: 'FAQ', href: 'index.html#faq' },
+                { name: 'Terms of Service', href: 'index.html#terms' },
+                { name: 'Privacy Policy', href: 'index.html#privacy' }
+            ];
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const dropdown = toggle.closest('.dropdown');
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > lastScroll) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                }
+                lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+            });
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && navToggle.checked && !nav.contains(e.target)) {
+                    navToggle.checked = false;
+                }
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            const contentObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            aboutSections.forEach(section => contentObserver.observe(section));
+            contentObserver.observe(mapPlaceholder);
+
+            function handleSearch() {
+                const query = searchInput.value.toLowerCase().trim();
+                searchResults.innerHTML = '';
+                if (query) {
+                    const results = searchableItems.filter(item => item.name.toLowerCase().includes(query));
+                    if (results.length) {
+                        results.forEach(result => {
+                            const link = document.createElement('a');
+                            link.href = result.href;
+                            link.textContent = result.name;
+                            searchResults.appendChild(link);
+                        });
+                        searchResults.style.display = 'block';
+                    } else {
+                        searchResults.style.display = 'none';
+                    }
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            }
+
+            searchInput.addEventListener('input', handleSearch);
+            searchInput.addEventListener('focus', handleSearch);
+        });
+    </script>
+</body>
+</html>
