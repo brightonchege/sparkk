@@ -257,7 +257,7 @@
             justify-content: center;
             text-align: center;
             padding: 25px;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, filter 0s ease;
             box-sizing: border-box;
             border: 1px solid rgba(75, 108, 183, 0.1);
             overflow: hidden;
@@ -280,6 +280,7 @@
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             filter: none;
+            z-index: 10;
         }
 
         .services-container:hover .service:not(:hover) {
@@ -596,6 +597,7 @@
             .service {
                 width: 300px;
                 height: 300px;
+                transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, filter 0s ease;
             }
 
             .service-title {
@@ -616,6 +618,10 @@
 
             .service:hover .service-details {
                 transform: translateY(0);
+            }
+
+            .services-container:hover .service:not(:hover) {
+                filter: blur(2px);
             }
 
             .footer-content {
@@ -709,7 +715,7 @@
             </label>
             <div class="nav-content">
                 <div class="links">
-                   <a class="links-child" href="index.html" data-search="Home">Home</a>
+                    <a class="links-child" href="index.html" data-search="Home">Home</a>
                     <a class="links-child" href="about.html" data-search="Home">About Us</a>
                     <a class="links-child" href="services.html" data-search="Home">Services</a>
                     <div class="links-child dropdown">
@@ -839,6 +845,7 @@
             const nav = document.querySelector('.biashara-nav');
             const navToggle = document.getElementById('nav-toggle');
             const services = document.querySelectorAll('.service');
+            const servicesContainer = document.querySelector('.services-container');
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
             let lastScroll = 0;
@@ -886,6 +893,19 @@
                 }
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
+                }
+                if (!servicesContainer.contains(e.target)) {
+                    services.forEach(service => {
+                        service.style.filter = 'none';
+                    });
+                }
+            });
+
+            document.addEventListener('touchstart', (e) => {
+                if (!servicesContainer.contains(e.target)) {
+                    services.forEach(service => {
+                        service.style.filter = 'none';
+                    });
                 }
             });
 
