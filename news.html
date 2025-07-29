@@ -269,6 +269,7 @@
             justify-content: center;
             width: 100%;
             max-width: 1280px;
+            position: relative;
         }
 
         .news-content.active {
@@ -290,9 +291,17 @@
             justify-content: center;
             text-align: center;
             padding: 25px;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease, filter 0s ease;
             box-sizing: border-box;
             border: 1px solid rgba(75, 108, 183, 0.1);
+            z-index: 1;
+        }
+
+        .news-item.active {
+            width: 720px;
+            height: 540px;
+            z-index: 10;
+            transform: scale(1);
         }
 
         .news-item.visible {
@@ -342,12 +351,63 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
             line-height: 1.5;
+            flex-grow: 1;
         }
 
         .news-item.visible .news-item-description {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.6s;
+        }
+
+        .news-item-read-more {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background: #f97316;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .news-item-read-more:hover {
+            background: #182848;
+        }
+
+        .news-item-details {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(24, 40, 72, 0.95);
+            color: #ffffff;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            border-radius: 16px;
+            box-sizing: border-box;
+        }
+
+        .news-item.active .news-item-details {
+            display: flex;
+        }
+
+        .news-item-details h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .news-item-details p {
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
         }
 
         .biashara-gallery {
@@ -371,10 +431,15 @@
             z-index: 10;
         }
 
-        .gallery-slider {
+        .gallery-slider-container {
             position: relative;
             width: 100%;
             max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .gallery-slider {
+            width: 100%;
             overflow-x: auto;
             display: flex;
             gap: 20px;
@@ -402,7 +467,7 @@
             justify-content: center;
             text-align: center;
             padding: 25px;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, filter 0s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
             border: 1px solid rgba(75, 108, 183, 0.1);
             scroll-snap-align: start;
@@ -423,12 +488,6 @@
         .gallery-item:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            filter: none;
-            z-index: 10;
-        }
-
-        .gallery-slider:hover .gallery-item:not(:hover) {
-            filter: blur(2px);
         }
 
         .gallery-image {
@@ -450,7 +509,6 @@
             font-size: 24px;
             font-weight: 700;
             color: #182848;
-            margin-bottom: 10px;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -460,41 +518,6 @@
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.4s;
-        }
-
-        .gallery-details {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(24, 40, 72, 0.95);
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 25px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            border-radius: 16px;
-            box-sizing: border-box;
-        }
-
-        .gallery-item:hover .gallery-details {
-            transform: translateX(0);
-        }
-
-        .gallery-details h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .gallery-details p {
-            font-size: 14px;
-            line-height: 1.5;
-            text-align: center;
         }
 
         .slider-arrow {
@@ -647,12 +670,26 @@
                 height: 320px;
             }
 
+            .news-item.active {
+                width: 640px;
+                height: 480px;
+            }
+
             .news-item-title {
                 font-size: 22px;
             }
 
-            .news-item-date, .news-item-description {
+            .news-item-date, .news-item-description, .news-item-details p {
                 font-size: 14px;
+            }
+
+            .news-item-details h3 {
+                font-size: 18px;
+            }
+
+            .news-item-read-more {
+                font-size: 13px;
+                padding: 7px 14px;
             }
 
             .biashara-gallery {
@@ -661,6 +698,10 @@
 
             .gallery-title {
                 font-size: 32px;
+            }
+
+            .gallery-slider-container {
+                max-width: 100%;
             }
 
             .gallery-item {
@@ -676,17 +717,17 @@
                 font-size: 22px;
             }
 
-            .gallery-details h3 {
-                font-size: 18px;
-            }
-
-            .gallery-details p {
-                font-size: 14px;
-            }
-
             .slider-arrow {
                 width: 36px;
                 height: 36px;
+            }
+
+            .slider-arrow-left {
+                left: 5px;
+            }
+
+            .slider-arrow-right {
+                right: 5px;
             }
 
             .footer-content {
@@ -812,12 +853,26 @@
                 height: 300px;
             }
 
+            .news-item.active {
+                width: 300px;
+                height: 450px;
+            }
+
             .news-item-title {
                 font-size: 20px;
             }
 
-            .news-item-date, .news-item-description {
+            .news-item-date, .news-item-description, .news-item-details p {
                 font-size: 13px;
+            }
+
+            .news-item-details h3 {
+                font-size: 16px;
+            }
+
+            .news-item-read-more {
+                font-size: 12px;
+                padding: 6px 12px;
             }
 
             .biashara-gallery {
@@ -846,22 +901,6 @@
 
             .gallery-item-title {
                 font-size: 20px;
-            }
-
-            .gallery-details h3 {
-                font-size: 16px;
-            }
-
-            .gallery-details p {
-                font-size: 13px;
-            }
-
-            .gallery-details {
-                transform: translateY(100%);
-            }
-
-            .gallery-item:hover .gallery-details {
-                transform: translateY(0);
             }
 
             .slider-arrow {
@@ -933,12 +972,26 @@
                 height: 280px;
             }
 
+            .news-item.active {
+                width: 280px;
+                height: 420px;
+            }
+
             .news-item-title {
                 font-size: 18px;
             }
 
-            .news-item-date, .news-item-description {
+            .news-item-date, .news-item-description, .news-item-details p {
                 font-size: 12px;
+            }
+
+            .news-item-details h3 {
+                font-size: 15px;
+            }
+
+            .news-item-read-more {
+                font-size: 11px;
+                padding: 5px 10px;
             }
 
             .biashara-gallery {
@@ -960,14 +1013,6 @@
 
             .gallery-item-title {
                 font-size: 18px;
-            }
-
-            .gallery-details h3 {
-                font-size: 15px;
-            }
-
-            .gallery-details p {
-                font-size: 12px;
             }
 
             .footer-content {
@@ -994,9 +1039,9 @@
                     <div class="links-child dropdown">
                         <span class="dropdown-toggle">Services</span>
                         <div class="dropdown-menu">
-                            <a href="#services-consulting" data-search="Consulting">Consulting</a>
-                            <a href="#services-support" data-search="Support">Support</a>
-                            <a href="#services-training" data-search="Training">Training</a>
+                            <a href="services.html#consulting" data-search="Consulting">Consulting</a>
+                            <a href="services.html#support" data-search="Support">Support</a>
+                            <a href="services.html#training" data-search="Training">Training</a>
                         </div>
                     </div>
                     <a class="links-child" href="news.html" data-search="News">News</a>
@@ -1022,89 +1067,97 @@
             </div>
             <div class="news-content recent-news active">
                 <div class="news-item">
-                    <div class="news-item-title">New Branch Opening</div>
-                    <div class="news-item-date">July 15, 2025</div>
-                    <p class="news-item-description">Biashara Community Sacco opens a new branch in Mombasa to serve more members.</p>
+                    <div class="news-item-title">New Mombasa Branch Launched</div>
+                    <div class="news-item-date">July 10, 2025</div>
+                    <p class="news-item-description">Biashara Community Sacco opens its third branch in Mombasa to expand financial services.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>New Mombasa Branch Launched</h3>
+                        <p>Biashara Community Sacco proudly opened its third branch in Mombasa on July 10, 2025. The new branch aims to provide accessible financial services, including savings accounts, loans, and financial literacy programs, to the coastal community. The opening ceremony was attended by local leaders and over 200 members, marking a significant milestone in our mission to empower businesses across Kenya.</p>
+                    </div>
                 </div>
                 <div class="news-item">
-                    <div class="news-item-title">Financial Literacy Workshop</div>
-                    <div class="news-item-date">June 20, 2025</div>
-                    <p class="news-item-description">Successful workshop held in Nairobi to educate members on financial planning.</p>
+                    <div class="news-item-title">Financial Literacy Drive Success</div>
+                    <div class="news-item-date">June 15, 2025</div>
+                    <p class="news-item-description">Over 300 members attended our financial literacy workshop in Nairobi.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>Financial Literacy Drive Success</h3>
+                        <p>Our financial literacy workshop, held on June 15, 2025, in Nairobi, drew over 300 participants. The event focused on budgeting, investment strategies, and loan management, empowering members to make informed financial decisions. Expert speakers from the banking sector shared insights, and interactive sessions provided practical tools for financial planning.</p>
+                    </div>
                 </div>
                 <div class="news-item">
-                    <div class="news-item-title">Annual General Meeting</div>
-                    <div class="news-item-date">May 10, 2025</div>
-                    <p class="news-item-description">Members gathered to discuss 2024 performance and 2025 goals.</p>
+                    <div class="news-item-title">2025 AGM Highlights</div>
+                    <div class="news-item-date">May 5, 2025</div>
+                    <p class="news-item-description">Annual General Meeting sets new goals for 2025.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>2025 AGM Highlights</h3>
+                        <p>The 2025 Annual General Meeting, held on May 5, 2025, brought together over 500 members to review 2024 performance and set ambitious goals for 2025. Key highlights included a 20% increase in membership and the approval of new loan products tailored for small businesses. The meeting also elected new board members to steer the Sacco forward.</p>
+                    </div>
                 </div>
             </div>
             <div class="news-content upcoming-events">
                 <div class="news-item">
-                    <div class="news-item-title">Community Outreach 2025</div>
-                    <div class="news-item-date">August 10, 2025</div>
-                    <p class="news-item-description">Join us for our annual outreach to promote financial literacy in Nairobi.</p>
+                    <div class="news-item-title">Community Outreach in Eldoret</div>
+                    <div class="news-item-date">August 20, 2025</div>
+                    <p class="news-item-description">Join our outreach program to promote financial inclusion in Eldoret.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>Community Outreach in Eldoret</h3>
+                        <p>Scheduled for August 20, 2025, our community outreach in Eldoret will focus on financial inclusion for underserved communities. The program includes free financial literacy workshops, business consultations, and networking opportunities. We aim to empower local entrepreneurs with the tools to grow their businesses sustainably.</p>
+                    </div>
                 </div>
                 <div class="news-item">
-                    <div class="news-item-title">Member Networking Event</div>
-                    <div class="news-item-date">September 5, 2025</div>
-                    <p class="news-item-description">An evening of networking and collaboration for Biashara members.</p>
+                    <div class="news-item-title">Member Networking Gala</div>
+                    <div class="news-item-date">September 10, 2025</div>
+                    <p class="news-item-description">An exclusive gala for Biashara members to network and collaborate.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>Member Networking Gala</h3>
+                        <p>Our Member Networking Gala on September 10, 2025, will bring together Biashara members for an evening of networking and collaboration. Held in Nairobi, the event will feature keynote speeches from industry leaders, business showcases, and opportunities to form strategic partnerships. Don’t miss this chance to connect!</p>
+                    </div>
                 </div>
                 <div class="news-item">
-                    <div class="news-item-title">Business Skills Workshop</div>
-                    <div class="news-item-date">October 15, 2025</div>
-                    <p class="news-item-description">Hands-on training to enhance business management skills.</p>
+                    <div class="news-item-title">Entrepreneurship Workshop</div>
+                    <div class="news-item-date">October 25, 2025</div>
+                    <p class="news-item-description">A workshop to boost entrepreneurial skills for our members.</p>
+                    <button class="news-item-read-more">Read More</button>
+                    <div class="news-item-details">
+                        <h3>Entrepreneurship Workshop</h3>
+                        <p>Join us on October 25, 2025, for an entrepreneurship workshop designed to enhance business management skills. Topics include digital marketing, cash flow management, and scaling small businesses. This hands-on session will provide practical tools and expert guidance to help members grow their enterprises.</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="biashara-gallery">
             <div class="gallery-title">Our Gallery</div>
-            <div class="gallery-slider">
+            <div class="gallery-slider-container">
                 <div class="slider-arrow slider-arrow-left"><i class="fas fa-chevron-left"></i></div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Community Outreach 2025</div>
-                    <div class="gallery-item-title">Community Outreach</div>
-                    <div class="gallery-details">
-                        <h3>Community Outreach 2025</h3>
-                        <p>Engaging with local communities to promote financial literacy in Nairobi.</p>
+                <div class="gallery-slider">
+                    <div class="gallery-item">
+                        <div class="gallery-image">Mombasa Branch Opening</div>
+                        <div class="gallery-item-title">Mombasa Branch Opening</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Member Events 2025</div>
-                    <div class="gallery-item-title">Member Events</div>
-                    <div class="gallery-details">
-                        <h3>Member Events 2025</h3>
-                        <p>Exclusive events fostering collaboration among Biashara members.</p>
+                    <div class="gallery-item">
+                        <div class="gallery-image">Financial Literacy Workshop</div>
+                        <div class="gallery-item-title">Financial Literacy Workshop</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Workshops 2025</div>
-                    <div class="gallery-item-title">Workshops</div>
-                    <div class="gallery-details">
-                        <h3>Workshops 2025</h3>
-                        <p>Hands-on sessions to empower members with business skills.</p>
+                    <div class="gallery-item">
+                        <div class="gallery-image">2025 AGM</div>
+                        <div class="gallery-item-title">2025 AGM</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Annual Meeting 2025</div>
-                    <div class="gallery-item-title">Annual Meeting</div>
-                    <div class="gallery-details">
-                        <h3>Annual Meeting 2025</h3>
-                        <p>Discussing achievements and strategies for the upcoming year.</p>
+                    <div class="gallery-item">
+                        <div class="gallery-image">Community Outreach</div>
+                        <div class="gallery-item-title">Community Outreach</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Charity Drive 2025</div>
-                    <div class="gallery-item-title">Charity Drive</div>
-                    <div class="gallery-details">
-                        <h3>Charity Drive 2025</h3>
-                        <p>Contributing to community welfare through charity initiatives.</p>
+                    <div class="gallery-item">
+                        <div class="gallery-image">Networking Gala</div>
+                        <div class="gallery-item-title">Networking Gala</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image">Training Session 2025</div>
-                    <div class="gallery-item-title">Training Session</div>
-                    <div class="gallery-details">
-                        <h3>Training Session 2025</h3>
-                        <p>Specialized training to enhance member capabilities.</p>
+                    <div class="gallery-item">
+                        <div class="gallery-image">Entrepreneurship Workshop</div>
+                        <div class="gallery-item-title">Entrepreneurship Workshop</div>
                     </div>
                 </div>
                 <div class="slider-arrow slider-arrow-right"><i class="fas fa-chevron-right"></i></div>
@@ -1115,21 +1168,16 @@
                 <div class="footer-column">
                     <h4>About Biashara</h4>
                     <a href="about.html" data-search="About Us">About Us</a>
-                    <a href="index.html#careers" data-search="Careers">Careers</a>
                 </div>
                 <div class="footer-column">
                     <h4>Services</h4>
-                    <a href="#services-consulting" data-search="Consulting">Consulting</a>
-                    <a href="#services-support" data-search="Support">Support</a>
-                    <a href="#services-training" data-search="Training">Training</a>
-                    <a href="#services-custom" data-search="Custom Solutions">Custom Solutions</a>
+                    <a href="services.html#consulting" data-search="Consulting">Consulting</a>
+                    <a href="services.html#support" data-search="Support">Support</a>
+                    <a href="services.html#training" data-search="Training">Training</a>
                 </div>
                 <div class="footer-column">
                     <h4>Support</h4>
-                    <a href="index.html#faq" data-search="FAQ">FAQ</a>
                     <a href="index.html#contact" data-search="Contact">Contact Us</a>
-                    <a href="index.html#terms" data-search="Terms of Service">Terms of Service</a>
-                    <a href="index.html#privacy" data-search="Privacy Policy">Privacy Policy</a>
                 </div>
                 <div class="footer-column">
                     <h4>Connect</h4>
@@ -1155,9 +1203,9 @@
             const navToggle = document.getElementById('nav-toggle');
             const newsItems = document.querySelectorAll('.news-item');
             const galleryItems = document.querySelectorAll('.gallery-item');
-            const galleryContainer = document.querySelector('.gallery-slider');
             const tabs = document.querySelectorAll('.tab');
             const newsContents = document.querySelectorAll('.news-content');
+            const readMoreButtons = document.querySelectorAll('.news-item-read-more');
             const leftArrow = document.querySelector('.slider-arrow-left');
             const rightArrow = document.querySelector('.slider-arrow-right');
             const slider = document.querySelector('.gallery-slider');
@@ -1168,16 +1216,11 @@
             const searchableItems = [
                 { name: 'Home', href: 'index.html#home' },
                 { name: 'About Us', href: 'about.html' },
-                { name: 'Consulting', href: '#services-consulting' },
-                { name: 'Support', href: '#services-support' },
-                { name: 'Training', href: '#services-training' },
+                { name: 'Consulting', href: 'services.html#consulting' },
+                { name: 'Support', href: 'services.html#support' },
+                { name: 'Training', href: 'services.html#training' },
                 { name: 'News', href: 'news.html' },
-                { name: 'Contact', href: 'index.html#contact' },
-                { name: 'Careers', href: 'index.html#careers' },
-                { name: 'Custom Solutions', href: 'index.html#services-custom' },
-                { name: 'FAQ', href: 'index.html#faq' },
-                { name: 'Terms of Service', href: 'index.html#terms' },
-                { name: 'Privacy Policy', href: 'index.html#privacy' }
+                { name: 'Contact', href: 'index.html#contact' }
             ];
 
             dropdownToggles.forEach(toggle => {
@@ -1196,6 +1239,29 @@
                     tab.classList.add('active');
                     newsContents.forEach(content => content.style.display = 'none');
                     document.querySelector(`.${tab.dataset.tab}`).style.display = 'grid';
+                    newsItems.forEach(item => {
+                        item.classList.remove('active');
+                        item.style.filter = 'none';
+                    });
+                });
+            });
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const newsItem = button.closest('.news-item');
+                    const isActive = newsItem.classList.contains('active');
+                    newsItems.forEach(item => {
+                        item.classList.remove('active');
+                        item.style.filter = 'none';
+                    });
+                    if (!isActive) {
+                        newsItem.classList.add('active');
+                        newsItems.forEach(item => {
+                            if (item !== newsItem) {
+                                item.style.filter = 'blur(2px)';
+                            }
+                        });
+                    }
                 });
             });
 
@@ -1215,19 +1281,6 @@
                 }
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
-                }
-                if (!galleryContainer.contains(e.target)) {
-                    galleryItems.forEach(item => {
-                        item.style.filter = 'none';
-                    });
-                }
-            });
-
-            document.addEventListener('touchstart', (e) => {
-                if (!galleryContainer.contains(e.target)) {
-                    galleryItems.forEach(item => {
-                        item.style.filter = 'none';
-                    });
                 }
             });
 
