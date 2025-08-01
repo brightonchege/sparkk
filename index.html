@@ -4,39 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biashara Sacco</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        :root {
+            --primary-blue: #1E3A8A;
+            --primary-orange: #F59E0B;
+            --primary-white: #FFFFFF;
+            --secondary-gray: #374151;
+            --light-gray: #F9FAFB;
+            --border-blue: rgba(30, 58, 138, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             min-height: 100vh;
-            background-color: #F9FAFB;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light-gray);
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
         .biashara {
-            width: 100%;
-            max-width: 100%;
             display: grid;
-            grid-template-rows: min-content 500px min-content min-content min-content min-content 600px min-content min-content;
-            box-sizing: border-box;
-            overflow-x: hidden;
+            grid-template-rows: min-content 500px repeat(7, min-content);
+            width: 100%;
         }
 
         .biashara-nav {
-            background: #1E3A8A;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--primary-blue);
             padding: 15px 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         .biashara-nav.hidden {
@@ -47,8 +53,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
             max-width: 1280px;
+            margin: 0 auto;
             gap: 20px;
         }
 
@@ -62,12 +68,12 @@
         .logo {
             width: 36px;
             height: 36px;
-            background: #F59E0B;
+            background: var(--primary-orange);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFFFFF;
+            color: var(--primary-white);
             font-size: 18px;
             font-weight: 700;
         }
@@ -75,7 +81,7 @@
         .head span {
             font-size: 22px;
             font-weight: 600;
-            color: #FFFFFF;
+            color: var(--primary-white);
         }
 
         .nav-content {
@@ -84,19 +90,18 @@
             gap: 20px;
             flex: 1;
             justify-content: center;
-            width: 100%;
         }
 
         .links {
             display: flex;
             gap: 20px;
             align-items: center;
-            flex: 1;
             justify-content: center;
+            flex: 1;
         }
 
         .links-child {
-            color: #FFFFFF;
+            color: var(--primary-white);
             font-size: 15px;
             font-weight: 500;
             text-decoration: none;
@@ -106,7 +111,7 @@
         }
 
         .links-child:hover {
-            color: #F59E0B;
+            color: var(--primary-orange);
         }
 
         .links-child:hover::after {
@@ -114,7 +119,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: #F59E0B;
+            background: var(--primary-orange);
             bottom: 0;
             left: 0;
         }
@@ -123,37 +128,32 @@
             position: relative;
         }
 
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background: #1E3A8A;
+            background: var(--primary-blue);
             min-width: 180px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             border-radius: 12px;
             z-index: 1000;
             padding: 8px 0;
-            transform: scale(0.9);
             opacity: 0;
-            transform-origin: top center;
-            animation: jelly 0.4s ease forwards;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        @keyframes jelly {
-            0% { transform: scale(0.9, 0.9); opacity: 0; }
-            50% { transform: scale(1.05, 0.95); opacity: 0.8; }
-            100% { transform: scale(1, 1); opacity: 1; }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .dropdown-menu a {
             display: block;
             padding: 10px 18px;
-            color: #FFFFFF;
+            color: var(--primary-white);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -161,12 +161,8 @@
         }
 
         .dropdown-menu a:hover {
-            background: #F59E0B;
-            color: #FFFFFF;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
+            background: var(--primary-orange);
+            color: var(--primary-white);
         }
 
         .nav-toggle, .hamburger {
@@ -176,31 +172,31 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: #FFFFFF;
+            background: var(--primary-white);
             border-radius: 25px;
             padding: 6px 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            flex-grow: 1;
             max-width: 200px;
+            flex-grow: 1;
         }
 
         .search-bar input {
             border: none;
             outline: none;
             font-size: 14px;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             width: 100%;
             padding: 4px;
         }
 
         .search-bar i {
-            color: #1E3A8A;
+            color: var(--primary-blue);
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .search-bar i:hover {
-            color: #F59E0B;
+            color: var(--primary-orange);
         }
 
         .search-results {
@@ -208,7 +204,7 @@
             position: absolute;
             top: 100%;
             right: 20px;
-            background: #FFFFFF;
+            background: var(--primary-white);
             min-width: 200px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             border-radius: 12px;
@@ -221,7 +217,7 @@
         .search-results a {
             display: block;
             padding: 8px;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
@@ -229,14 +225,14 @@
         }
 
         .search-results a:hover {
-            background: #F59E0B;
-            color: #FFFFFF;
+            background: var(--primary-orange);
+            color: var(--primary-white);
             border-radius: 8px;
         }
 
         .cta-button {
-            background: #F59E0B;
-            color: #FFFFFF;
+            background: var(--primary-orange);
+            color: var(--primary-white);
             padding: 8px 18px;
             border-radius: 25px;
             text-decoration: none;
@@ -253,15 +249,13 @@
         }
 
         .biashara-hero {
-            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
+            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 50px 20px;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         .hero-content {
@@ -279,33 +273,31 @@
         .hero-title {
             font-size: 36px;
             font-weight: 700;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             margin-bottom: 18px;
             line-height: 1.2;
         }
 
         .hero-description {
             font-size: 16px;
-            color: #374151;
+            color: var(--secondary-gray);
             margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        .biashara-services, .biashara-loans, .biashara-membership {
-            background-color: #FFFFFF;
+        .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
+            background: var(--primary-white);
             display: flex;
             flex-direction: column;
             gap: 40px;
             padding: 80px 20px;
             align-items: center;
-            width: 100%;
-            box-sizing: border-box;
         }
 
-        .services-title, .loans-title, .membership-title {
+        .services-title, .loans-title, .membership-title, .news-title {
             font-size: 30px;
             font-weight: 700;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
@@ -314,41 +306,47 @@
 
         .biashara-services.visible .services-title,
         .biashara-loans.visible .loans-title,
-        .biashara-membership.visible .membership-title {
+        .biashara-membership.visible .membership-title,
+        .biashara-news.visible .news-title {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0s;
         }
 
-        .services-container, .loans-container, .membership-container {
+        .services-container, .loans-container, .membership-container, .news-container {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
             gap: 40px;
             justify-content: center;
-            align-items: center;
-            width: 100%;
             max-width: 1280px;
+            width: 100%;
         }
 
-        .services, .loan-item, .membership-item {
+        .services, .loan-item, .membership-item, .news-item {
             width: 400px;
             height: 400px;
-            background: #FFFFFF;
+            background: var(--primary-white);
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: scale(0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 30px;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-            box-sizing: border-box;
-            border: 1px solid rgba(30, 58, 138, 0.1);
-            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-blue);
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .services.visible, .loan-item.visible, .membership-item.visible, .news-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .services:hover, .loan-item:hover, .membership-item:hover, .news-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .membership-item {
@@ -360,76 +358,39 @@
         }
 
         .membership-item::-webkit-scrollbar-track {
-            background: #F9FAFB;
+            background: var(--light-gray);
             border-radius: 8px;
         }
 
         .membership-item::-webkit-scrollbar-thumb {
-            background: #1E3A8A;
+            background: var(--primary-blue);
             border-radius: 8px;
         }
 
         .membership-item::-webkit-scrollbar-thumb:hover {
-            background: #F59E0B;
+            background: var(--primary-orange);
         }
 
-        .services:hover, .loan-item:hover, .membership-item:hover {
-            transform: scale(1.01);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .services.visible, .loan-item.visible, .membership-item.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .services:nth-child(1), .loan-item:nth-child(1), .membership-item:nth-child(1) { transition-delay: 0.3s; }
-        .services:nth-child(2), .loan-item:nth-child(2), .membership-item:nth-child(2) { transition-delay: 0.5s; }
-        .services:nth-child(3), .loan-item:nth-child(3) { transition-delay: 0.7s; }
-        .loan-item:nth-child(4) { transition-delay: 0.9s; }
-
-        .service-title, .loan-title, .membership-benefit-title {
+        .service-title, .loan-title, .membership-benefit-title, .news-item-title {
             font-size: 22px;
             font-weight: 600;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             margin-bottom: 18px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .services.visible .service-title,
-        .loan-item.visible .loan-title,
-        .membership-item.visible .membership-benefit-title {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
-        }
-
-        .service-description, .loan-description, .membership-description {
+        .service-description, .loan-description, .membership-description, .news-description {
             font-size: 14px;
-            color: #374151;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            color: var(--secondary-gray);
             line-height: 1.5;
             max-height: 240px;
-        }
-
-        .services.visible .service-description,
-        .loan-item.visible .loan-description,
-        .membership-item.visible .membership-description {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.5s;
         }
 
         .loan-badge {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #F59E0B;
-            color: #FFFFFF;
+            background: var(--primary-orange);
+            color: var(--primary-white);
             font-size: 12px;
             font-weight: 600;
             padding: 6px 12px;
@@ -444,163 +405,25 @@
         }
 
         .membership-details i {
-            color: #F59E0B;
+            color: var(--primary-orange);
             font-size: 16px;
             margin-top: 4px;
         }
 
-        .biashara-news {
-            background-color: #FFFFFF;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            padding: 80px 20px;
-            align-items: center;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .news-title {
-            font-size: 30px;
-            font-weight: 700;
-            color: #1E3A8A;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .biashara-news.visible .news-title {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0s;
-        }
-
-        .news-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-            width: 100%;
-            max-width: 1280px;
-        }
-
-        .news-item {
-            width: 400px;
-            height: 400px;
-            background: #FFFFFF;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: scale(0.95);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 30px;
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-            box-sizing: border-box;
-            border: 1px solid rgba(30, 58, 138, 0.1);
-        }
-
-        .news-item:hover {
-            transform: scale(1.01);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .news-item.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .news-item:nth-child(1) { transition-delay: 0.3s; }
-        .news-item:nth-child(2) { transition-delay: 0.5s; }
-        .news-item:nth-child(3) { transition-delay: 0.7s; }
-
-        .news-item-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: #1E3A8A;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .news-item.visible .news-item-title {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
-        }
-
-        .news-date {
-            font-size: 13px;
-            color: #1E3A8A;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .news-item.visible .news-date {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.5s;
-        }
-
-        .news-description {
-            font-size: 14px;
-            color: #374151;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .news-item.visible .news-description {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.6s;
-        }
-
-        .news-item a {
-            color: #F59E0B;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease, color 0.3s ease;
-        }
-
-        .news-item.visible a {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.7s;
-        }
-
-        .news-item a:hover {
-            color: #D97706;
-        }
-
         .biashara-comments {
-            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
-            position: relative;
+            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
             padding: 80px 20px;
-            width: 100%;
-            box-sizing: border-box;
             min-height: 600px;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         .comments-title {
             font-size: 30px;
             font-weight: 700;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
             padding: 18px 36px;
@@ -615,12 +438,11 @@
         .biashara-comments.visible .comments-title {
             opacity: 1;
             transform: scale(1);
-            transition-delay: 0s;
         }
 
         .comment {
             position: absolute;
-            background: #FFFFFF;
+            background: var(--primary-white);
             padding: 18px;
             width: 300px;
             height: 110px;
@@ -631,8 +453,7 @@
             gap: 12px;
             opacity: 0;
             transition: opacity 0.6s ease, transform 0.3s ease, filter 0.3s ease;
-            box-sizing: border-box;
-            border: 1px solid rgba(30, 58, 138, 0.1);
+            border: 1px solid var(--border-blue);
         }
 
         .comment.under-title {
@@ -656,17 +477,16 @@
         .comment:nth-child(7) { transition-delay: 0.8s; }
         .comment:nth-child(8) { transition-delay: 0.9s; }
         .comment:nth-child(9) { transition-delay: 1.0s; }
-        .comment:nth-child(10) { transition-delay: 1.1s; }
 
         .comment-profile-pic {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #1E3A8A;
+            background: var(--primary-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFFFFF;
+            color: var(--primary-white);
             font-weight: 600;
             font-size: 16px;
         }
@@ -677,29 +497,20 @@
 
         .comment-name {
             font-weight: 600;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             margin-bottom: 6px;
             font-size: 14px;
         }
 
         .comment-text {
             font-size: 13px;
-            color: #374151;
+            color: var(--secondary-gray);
             line-height: 1.4;
         }
 
-        .biashara-career {
-            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
         .biashara-principles {
-            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
+            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
             padding: 80px 20px;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: left;
             max-width: 1280px;
             margin: 0 auto;
         }
@@ -708,7 +519,6 @@
             display: flex;
             flex-direction: row;
             gap: 40px;
-            width: 100%;
         }
 
         .principles-column {
@@ -716,13 +526,12 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            min-width: 0;
         }
 
         .principles-title {
             font-size: 24px;
             font-weight: 600;
-            color: #1E3A8A;
+            color: var(--primary-blue);
             margin-bottom: 18px;
         }
 
@@ -734,7 +543,7 @@
 
         .principle-item {
             font-size: 15px;
-            color: #374151;
+            color: var(--secondary-gray);
             line-height: 1.5;
             position: relative;
             padding-left: 25px;
@@ -744,17 +553,14 @@
             content: '•';
             position: absolute;
             left: 0;
-            color: #F59E0B;
+            color: var(--primary-orange);
             font-size: 20px;
-            line-height: 1.5;
         }
 
         .biashara-footer {
             background: linear-gradient(135deg, #D97706 0%, #7C2D12 100%);
             padding: 80px 20px;
-            color: #FFFFFF;
-            width: 100%;
-            box-sizing: border-box;
+            color: var(--primary-white);
         }
 
         .footer-content {
@@ -764,7 +570,6 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
             padding-bottom: 40px;
-            box-sizing: border-box;
         }
 
         .footer-column {
@@ -777,7 +582,6 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #FFFFFF;
         }
 
         .footer-column a {
@@ -789,7 +593,7 @@
         }
 
         .footer-column a:hover {
-            color: #F59E0B;
+            color: var(--primary-orange);
         }
 
         .newsletter-form {
@@ -803,14 +607,14 @@
             border: none;
             border-radius: 8px;
             font-size: 14px;
-            color: #374151;
+            color: var(--secondary-gray);
             width: 100%;
             max-width: 250px;
         }
 
         .newsletter-form button {
-            background: #F59E0B;
-            color: #FFFFFF;
+            background: var(--primary-orange);
+            color: var(--primary-white);
             padding: 10px;
             border: none;
             border-radius: 8px;
@@ -831,12 +635,12 @@
 
         .social-links a {
             font-size: 20px;
-            color: #FFFFFF;
+            color: var(--primary-white);
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-links a:hover {
-            color: #F59E0B;
+            color: var(--primary-orange);
             transform: translateY(-2px);
         }
 
@@ -844,85 +648,17 @@
             text-align: center;
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
 
         .footer-bottom p {
             font-size: 14px;
             color: #E5E7EB;
             margin: 5px 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .loan-details, .membership-details {
-            font-size: 14px;
-            color: #374151;
-            line-height: 1.5;
-            text-align: left;
-        }
-
-        .loan-details li, .membership-details li {
-            margin-bottom: 10px;
         }
 
         @media (max-width: 1024px) {
             .biashara {
-                grid-template-rows: min-content 400px min-content min-content min-content min-content 600px min-content min-content;
-            }
-
-            .biashara-nav {
-                padding: 12px 15px;
-            }
-
-            .nav-container {
-                gap: 15px;
-            }
-
-            .head span {
-                font-size: 20px;
-            }
-
-            .links {
-                gap: 15px;
-            }
-
-            .links-child {
-                font-size: 14px;
-                padding: 6px 10px;
-            }
-
-            .search-bar {
-                max-width: 160px;
-            }
-
-            .search-bar input {
-                font-size: 13px;
-            }
-
-            .cta-button {
-                padding: 6px 14px;
-                font-size: 13px;
-                min-width: 80px;
-            }
-
-            .biashara-hero {
-                padding: 40px 15px;
-            }
-
-            .hero-title {
-                font-size: 32px;
-            }
-
-            .hero-description {
-                font-size: 15px;
-            }
-
-            .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 60px 15px;
+                grid-template-rows: min-content 400px repeat(7, min-content);
             }
 
             .services, .loan-item, .membership-item, .news-item {
@@ -930,28 +666,8 @@
                 height: 360px;
             }
 
-            .service-title, .loan-title, .membership-benefit-title, .news-item-title {
-                font-size: 20px;
-            }
-
-            .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 13px;
-                max-height: 200px;
-            }
-
-            .comment {
-                width: 280px;
-                height: 100px;
-            }
-
-            .principles-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
             }
         }
 
@@ -963,11 +679,10 @@
                 width: 26px;
                 height: 18px;
                 cursor: pointer;
-                margin-left: 10px;
             }
 
             .hamburger span {
-                background: #FFFFFF;
+                background: var(--primary-white);
                 height: 2px;
                 border-radius: 2px;
                 transition: all 0.3s ease;
@@ -992,11 +707,9 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: #1E3A8A;
+                background: var(--primary-blue);
                 padding: 12px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                align-items: flex-start;
-                box-sizing: border-box;
             }
 
             .nav-toggle:checked ~ .nav-content {
@@ -1005,15 +718,8 @@
 
             .links {
                 flex-direction: column;
-                width: 100%;
                 align-items: flex-start;
                 gap: 8px;
-            }
-
-            .links-child {
-                padding: 10px;
-                font-size: 14px;
-                color: #FFFFFF;
             }
 
             .dropdown-menu {
@@ -1024,128 +730,32 @@
                 opacity: 1;
                 display: none;
                 border-radius: 0;
-                animation: none;
             }
 
             .dropdown.active .dropdown-menu {
                 display: block;
             }
 
-            .search-bar {
-                margin-left: 10px;
-                padding: 5px 8px;
-                max-width: 140px;
-            }
-
-            .search-bar input {
-                font-size: 13px;
-            }
-
-            .cta-button {
-                padding: 6px 12px;
-                font-size: 13px;
-                min-width: 80px;
-            }
-
-            .biashara-hero {
-                padding: 30px 10px;
-            }
-
-            .hero-title {
-                font-size: 28px;
-            }
-
-            .hero-description {
-                font-size: 14px;
-            }
-
-            .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 50px 10px;
-            }
-
             .services, .loan-item, .membership-item, .news-item {
                 width: 340px;
                 height: 340px;
-                margin: 0 auto;
             }
 
             .news-container, .loans-container, .membership-container {
                 display: grid;
                 grid-template-columns: 1fr;
                 gap: 30px;
-                justify-items: center;
-            }
-
-            .comment {
-                width: 260px;
-                height: 90px;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
             }
         }
 
         @media (max-width: 500px) {
             .biashara {
-                grid-template-rows: min-content 350px min-content min-content min-content min-content 600px min-content min-content;
+                grid-template-rows: min-content 350px repeat(7, min-content);
             }
 
-            .biashara-nav {
-                padding: 10px 12px;
-            }
-
-            .nav-container {
-                gap: 10px;
-            }
-
-            .head span {
-                font-size: 18px;
-            }
-
-            .logo {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
-            }
-
-            .hamburger {
-                width: 22px;
-                height: 16px;
-            }
-
-            .hamburger span {
-                height: 2px;
-            }
-
-            .nav-content {
-                top: 60px;
-                padding: 10px;
-            }
-
-            .links-child {
-                font-size: 13px;
-                padding: 8px;
-            }
-
-            .search-bar {
-                padding: 4px 6px;
-                max-width: 120px;
-            }
-
-            .search-bar input {
-                font-size: 12px;
-            }
-
-            .cta-button {
-                padding: 5px 10px;
-                font-size: 12px;
-                min-width: 70px;
-            }
-
-            .biashara-hero {
-                padding: 20px 10px;
+            .services, .loan-item, .membership-item, .news-item {
+                width: 300px;
+                height: 300px;
             }
 
             .hero-title {
@@ -1155,77 +765,19 @@
             .hero-description {
                 font-size: 13px;
             }
-
-            .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 40px 10px;
-            }
-
-            .services, .loan-item, .membership-item, .news-item {
-                width: 300px;
-                height: 300px;
-                margin: 0 auto;
-            }
-
-            .services-title, .loans-title, .membership-title, .news-title {
-                font-size: 26px;
-            }
-
-            .service-title, .loan-title, .membership-benefit-title, .news-item-title {
-                font-size: 18px;
-            }
-
-            .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 12px;
-                max-height: 180px;
-            }
-
-            .comment {
-                width: 220px;
-                height: 80px;
-            }
-
-            .comment-profile-pic {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
-            }
-
-            .comment-name {
-                font-size: 12px;
-            }
-
-            .comment-text {
-                font-size: 11px;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .news-container, .loans-container, .membership-container {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 20px;
-                justify-items: center;
-            }
-
-            .newsletter-form input {
-                max-width: 200px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="biashara">
-        <div class="biashara-nav">
+        <nav class="biashara-nav" aria-label="Main navigation">
             <div class="nav-container">
                 <div class="head">
                     <div class="logo">BS</div>
                     <span>Biashara Sacco</span>
                 </div>
-                <input type="checkbox" id="nav-toggle" class="nav-toggle">
-                <label for="nav-toggle" class="hamburger">
+                <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+                <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1234,48 +786,55 @@
                     <div class="links">
                         <a class="links-child" href="index.html" data-search="Home">Home</a>
                         <a class="links-child" href="about.html" data-search="About">About Us</a>
-                        <a class="links-child" href="services.html" data-search="Services">Services</a>
+                        <div class="dropdown">
+                            <a class="links-child dropdown-toggle" href="services.html" data-search="Services">Services</a>
+                            <div class="dropdown-menu">
+                                <a href="#services-consulting">Consulting</a>
+                                <a href="#services-support">Support</a>
+                                <a href="#services-training">Training</a>
+                            </div>
+                        </div>
                         <a class="links-child" href="news.html" data-search="News">News</a>
                         <a class="links-child" href="#contact" data-search="Contact">Contact</a>
                     </div>
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search..." id="search-input">
-                        <i class="fas fa-search"></i>
+                    <div class="search-bar" role="search">
+                        <input type="text" placeholder="Search..." id="search-input" aria-label="Search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </div>
                     <div class="search-results" id="search-results"></div>
                     <a href="#join" class="cta-button">Join Now</a>
                 </div>
             </div>
-        </div>
-        <div class="biashara-hero">
+        </nav>
+        <section class="biashara-hero" aria-label="Hero section">
             <div class="hero-content">
                 <h1 class="hero-title">Empowering Your Financial Future</h1>
                 <p class="hero-description">Join Biashara Sacco for tailored savings, loans, and financial solutions to help you grow.</p>
                 <a href="#join" class="cta-button">Join Today</a>
             </div>
-        </div>
-        <div class="biashara-services">
-            <div class="services-title">Our Services</div>
+        </section>
+        <section class="biashara-services" aria-label="Services section">
+            <h2 class="services-title">Our Services</h2>
             <div class="services-container">
                 <div class="services" data-search="Consulting">
-                    <div class="service-title">Financial Consulting</div>
+                    <h3 class="service-title">Financial Consulting</h3>
                     <p class="service-description">Expert advice to help you manage and grow your finances with confidence.</p>
                 </div>
                 <div class="services" data-search="Support">
-                    <div class="service-title">Member Support</div>
+                    <h3 class="service-title">Member Support</h3>
                     <p class="service-description">24/7 support to ensure your financial needs are met promptly.</p>
                 </div>
                 <div class="services" data-search="Training">
-                    <div class="service-title">Financial Education</div>
+                    <h3 class="service-title">Financial Education</h3>
                     <p class="service-description">Workshops and programs to empower you with financial knowledge.</p>
                 </div>
             </div>
-        </div>
-        <div class="biashara-loans">
-            <div class="loans-title">Our Loan Products</div>
+        </section>
+        <section class="biashara-loans" aria-label="Loans section">
+            <h2 class="loans-title">Our Loan Products</h2>
             <div class="loans-container">
                 <div class="loan-item">
-                    <div class="loan-title">Beba Loan</div>
+                    <h3 class="loan-title">Beba Loan</h3>
                     <div class="loan-description">
                         <ul class="loan-details">
                             <li>Target: Associate members</li>
@@ -1289,7 +848,7 @@
                     </div>
                 </div>
                 <div class="loan-item">
-                    <div class="loan-title">Masomo Loan</div>
+                    <h3 class="loan-title">Masomo Loan</h3>
                     <div class="loan-description">
                         <ul class="loan-details">
                             <li>Target: Members with Masomo account</li>
@@ -1303,7 +862,7 @@
                     </div>
                 </div>
                 <div class="loan-item">
-                    <div class="loan-title">Mortgage Loan</div>
+                    <h3 class="loan-title">Mortgage Loan</h3>
                     <div class="loan-description">
                         <ul class="loan-details">
                             <li>Target: Full members with mortgage account</li>
@@ -1316,8 +875,8 @@
                     </div>
                 </div>
                 <div class="loan-item">
-                    <div class="loan-title">InstantPesa Loan</div>
-                    <div class="loan-badge">New!</div>
+                    <h3 class="loan-title">InstantPesa Loan</h3>
+                    <span class="loan-badge">New!</span>
                     <div class="loan-description">
                         <ul class="loan-details">
                             <li>Target: All members</li>
@@ -1331,12 +890,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="biashara-membership">
-            <div class="membership-title">Become a Member</div>
+        </section>
+        <section class="biashara-membership" aria-label="Membership section">
+            <h2 class="membership-title">Become a Member</h2>
             <div class="membership-container">
                 <div class="membership-item">
-                    <div class="membership-benefit-title">Membership Benefits</div>
+                    <h3 class="membership-benefit-title">Membership Benefits</h3>
                     <div class="membership-description">
                         <ul class="membership-details">
                             <li><i class="fas fa-check-circle"></i>Earn high interest on deposits and dividends</li>
@@ -1351,14 +910,14 @@
                     </div>
                 </div>
                 <div class="membership-item">
-                    <div class="membership-benefit-title">How to Join</div>
+                    <h3 class="membership-benefit-title">How to Join</h3>
                     <div class="membership-description">
                         <p>Contact us at +254 123 456 789 or visit our branches. Requirements: Valid ID, recent passport photo, and initial deposit. Complete the membership form and start saving!</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="biashara-news">
+        </section>
+        <section class="biashara-news" aria-label="News section">
             <h2 class="news-title">News & Updates</h2>
             <div class="news-container">
                 <div class="news-item">
@@ -1380,9 +939,9 @@
                     <a href="#news-event">Read More</a>
                 </div>
             </div>
-        </div>
-        <div class="biashara-comments">
-            <div class="comments-title">What Our Members Say</div>
+        </section>
+        <section class="biashara-comments" aria-label="Testimonials section">
+            <h2 class="comments-title">What Our Members Say</h2>
             <div class="comment">
                 <div class="comment-profile-pic">JM</div>
                 <div class="comment-content">
@@ -1446,16 +1005,8 @@
                     <div class="comment-text">A great experience with Biashara!</div>
                 </div>
             </div>
-            <div class="comment">
-                <div class="comment-profile-pic">JP</div>
-                <div class="comment-content">
-                    <div class="comment-name">James P.</div>
-                    <div class="comment-text">Superb member care!</div>
-                </div>
-            </div>
-        </div>
-        <div class="biashara-career"></div>
-        <div class="biashara-principles">
+        </section>
+        <section class="biashara-principles" aria-label="Principles section">
             <div class="principles-content">
                 <div class="principles-column">
                     <h2 class="principles-title">Core Values</h2>
@@ -1479,8 +1030,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="biashara-footer">
+        </section>
+        <footer class="biashara-footer" aria-label="Footer">
             <div class="footer-content">
                 <div class="footer-column">
                     <h4>About Biashara</h4>
@@ -1508,13 +1059,13 @@
                     <p>Email: contact@biashara.com</p>
                     <p>Phone: +254 123 456 789</p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" id="newsletter-input">
+                        <input type="email" placeholder="Enter your email" id="newsletter-input" aria-label="Newsletter email">
                         <button type="button" id="newsletter-submit">Subscribe</button>
                     </div>
                     <div class="social-links">
-                        <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://linkedin.com/company/biashara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://facebook.com/biashara" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/biashara" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/biashara" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1522,33 +1073,19 @@
                 <p>Biashara Sacco | 123 Business Avenue, Nairobi, Kenya</p>
                 <p>© 2025 Biashara Sacco. All rights reserved.</p>
             </div>
-        </div>
+        </footer>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
             const nav = document.querySelector('.biashara-nav');
             const navToggle = document.getElementById('nav-toggle');
-            const services = document.querySelectorAll('.services');
-            const loans = document.querySelectorAll('.loan-item');
-            const membershipItems = document.querySelectorAll('.membership-item');
-            const comments = document.querySelectorAll('.comment');
-            const newsItems = document.querySelectorAll('.news-item');
-            const hero = document.querySelector('.biashara-hero');
-            const servicesSection = document.querySelector('.biashara-services');
-            const loansSection = document.querySelector('.biashara-loans');
-            const membershipSection = document.querySelector('.biashara-membership');
-            const newsSection = document.querySelector('.biashara-news');
-            const commentsSection = document.querySelector('.biashara-comments');
-            const servicesTitle = document.querySelector('.services-title');
-            const loansTitle = document.querySelector('.loans-title');
-            const membershipTitle = document.querySelector('.membership-title');
-            const newsTitle = document.querySelector('.news-title');
-            const commentsTitle = document.querySelector('.comments-title');
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
             const newsletterSubmit = document.getElementById('newsletter-submit');
             const newsletterInput = document.getElementById('newsletter-input');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            const sections = document.querySelectorAll('.biashara-hero, .biashara-services, .biashara-loans, .biashara-membership, .biashara-news, .biashara-comments');
+            const items = document.querySelectorAll('.services, .loan-item, .membership-item, .news-item, .comment');
             let lastScroll = 0;
 
             const searchableItems = [
@@ -1569,71 +1106,40 @@
                 { name: 'Privacy Policy', href: '#privacy' }
             ];
 
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        const dropdown = toggle.closest('.dropdown');
-                        dropdown.classList.toggle('active');
-                    }
-                });
-            });
-
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                if (currentScroll > lastScroll) {
-                    nav.classList.add('hidden');
-                } else {
-                    nav.classList.remove('hidden');
-                }
-                lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-            });
-
-            document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768 && navToggle.checked && !nav.contains(e.target)) {
-                    navToggle.checked = false;
-                }
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                    searchResults.style.display = 'none';
-                }
-            });
-
-            const titleObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
-                    }
+                    entry.target.classList.toggle('visible', entry.isIntersecting);
                 });
             }, { threshold: 0.3 });
 
-            const contentObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
-                    }
-                });
-            }, { threshold: 0.5 });
+            sections.forEach(section => observer.observe(section));
+            items.forEach((item, index) => {
+                observer.observe(item);
+                item.style.transitionDelay = `${0.3 + index * 0.2}s`;
+            });
 
-            titleObserver.observe(servicesTitle);
-            titleObserver.observe(loansTitle);
-            titleObserver.observe(membershipTitle);
-            titleObserver.observe(newsTitle);
-            titleObserver.observe(commentsTitle);
-            contentObserver.observe(hero);
-            contentObserver.observe(servicesSection);
-            contentObserver.observe(loansSection);
-            contentObserver.observe(membershipSection);
-            contentObserver.observe(newsSection);
-            contentObserver.observe(commentsSection);
-            services.forEach(service => contentObserver.observe(service));
-            loans.forEach(loan => contentObserver.observe(loan));
-            membershipItems.forEach(item => contentObserver.observe(item));
-            newsItems.forEach(item => contentObserver.observe(item));
-            comments.forEach(comment => contentObserver.observe(comment));
+            const handleScroll = () => {
+                const currentScroll = window.pageYOffset;
+                nav.classList.toggle('hidden', currentScroll > lastScroll && currentScroll > 0);
+                lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+            };
+
+            const handleSearch = () => {
+                const query = searchInput.value.toLowerCase().trim();
+                searchResults.innerHTML = '';
+                if (query) {
+                    const results = searchableItems.filter(item => item.name.toLowerCase().includes(query));
+                    results.forEach(result => {
+                        const link = document.createElement('a');
+                        link.href = result.href;
+                        link.textContent = result.name;
+                        searchResults.appendChild(link);
+                    });
+                    searchResults.style.display = results.length ? 'block' : 'none';
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            };
 
             function shuffleArray(array) {
                 for (let i = array.length - 1; i > 0; i--) {
@@ -1643,21 +1149,10 @@
                 return array;
             }
 
-            let resizeTimeout;
-            function debounce(func, wait) {
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(resizeTimeout);
-                        func(...args);
-                    };
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(later, wait);
-                };
-            }
-
             function positionComments() {
                 const commentsContainer = document.querySelector('.biashara-comments');
                 const commentsTitle = document.querySelector('.comments-title');
+                const comments = document.querySelectorAll('.comment');
                 const containerWidth = commentsContainer.offsetWidth;
                 const containerHeight = commentsContainer.offsetHeight;
                 const commentWidth = window.innerWidth <= 500 ? 220 : window.innerWidth <= 768 ? 260 : 300;
@@ -1731,26 +1226,14 @@
                 });
             }
 
-            function handleSearch() {
-                const query = searchInput.value.toLowerCase().trim();
-                searchResults.innerHTML = '';
-                if (query) {
-                    const results = searchableItems.filter(item => item.name.toLowerCase().includes(query));
-                    if (results.length) {
-                        results.forEach(result => {
-                            const link = document.createElement('a');
-                            link.href = result.href;
-                            link.textContent = result.name;
-                            searchResults.appendChild(link);
-                        });
-                        searchResults.style.display = 'block';
-                    } else {
-                        searchResults.style.display = 'none';
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        toggle.parentElement.classList.toggle('active');
                     }
-                } else {
-                    searchResults.style.display = 'none';
-                }
-            }
+                });
+            });
 
             newsletterSubmit.addEventListener('click', () => {
                 const email = newsletterInput.value.trim();
@@ -1761,10 +1244,23 @@
                 }
             });
 
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && navToggle.checked && !nav.contains(e.target)) {
+                    navToggle.checked = false;
+                }
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+
             searchInput.addEventListener('input', handleSearch);
             searchInput.addEventListener('focus', handleSearch);
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', () => {
+                clearTimeout(window.resizeTimeout);
+                window.resizeTimeout = setTimeout(positionComments, 200);
+            });
             positionComments();
-            window.addEventListener('resize', debounce(positionComments, 200));
         });
     </script>
 </body>
