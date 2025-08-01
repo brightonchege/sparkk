@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biashara</title>
+    <title>Biashara Sacco</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             min-height: 100vh;
-            background-color: #f9fafb;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #F9FAFB;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
         }
 
@@ -18,17 +19,18 @@
             width: 100%;
             max-width: 100%;
             display: grid;
-            grid-template-rows: min-content 600px min-content min-content min-content min-content 600px min-content min-content;
+            grid-template-rows: min-content 500px min-content min-content min-content min-content 600px min-content min-content;
             box-sizing: border-box;
             overflow-x: hidden;
         }
 
         .biashara-nav {
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: #1E3A8A;
             display: flex;
             align-items: center;
+            justify-content: center;
             padding: 15px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -41,38 +43,70 @@
             transform: translateY(-100%);
         }
 
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1280px;
+            gap: 20px;
+        }
+
         .head {
-            font-size: 28px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-right: auto;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 180px;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            background: #F59E0B;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .head span {
+            font-size: 22px;
+            font-weight: 600;
+            color: #FFFFFF;
         }
 
         .nav-content {
             display: flex;
             align-items: center;
             gap: 20px;
+            flex: 1;
+            justify-content: center;
+            width: 100%;
         }
 
         .links {
             display: flex;
             gap: 20px;
             align-items: center;
+            flex: 1;
+            justify-content: center;
         }
 
         .links-child {
-            color: #ffffff;
-            font-size: 16px;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 500;
             text-decoration: none;
-            padding: 10px;
+            padding: 8px 12px;
             position: relative;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: color 0.3s ease;
         }
 
         .links-child:hover {
-            color: #f97316;
-            transform: translateY(-2px);
+            color: #F59E0B;
         }
 
         .links-child:hover::after {
@@ -80,7 +114,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: #f97316;
+            background: #F59E0B;
             bottom: 0;
             left: 0;
         }
@@ -98,12 +132,12 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(24, 40, 72, 0.95);
-            min-width: 200px;
+            background: #1E3A8A;
+            min-width: 180px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            border-radius: 12px;
             z-index: 1000;
-            padding: 10px 0;
+            padding: 8px 0;
             transform: scale(0.9);
             opacity: 0;
             transform-origin: top center;
@@ -112,22 +146,23 @@
 
         @keyframes jelly {
             0% { transform: scale(0.9, 0.9); opacity: 0; }
-            50% { transform: scale(1.1, 0.9); opacity: 0.8; }
+            50% { transform: scale(1.05, 0.95); opacity: 0.8; }
             100% { transform: scale(1, 1); opacity: 1; }
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 12px 20px;
-            color: #ffffff;
+            padding: 10px 18px;
+            color: #FFFFFF;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 500;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
         .dropdown-menu a:hover {
-            background: #f97316;
-            color: #ffffff;
+            background: #F59E0B;
+            color: #FFFFFF;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -141,29 +176,31 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: #ffffff;
+            background: #FFFFFF;
             border-radius: 25px;
-            padding: 8px 12px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 6px 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+            max-width: 200px;
         }
 
         .search-bar input {
             border: none;
             outline: none;
-            font-size: 15px;
-            color: #182848;
-            width: 160px;
-            padding: 5px;
+            font-size: 14px;
+            color: #1E3A8A;
+            width: 100%;
+            padding: 4px;
         }
 
         .search-bar i {
-            color: #4b6cb7;
+            color: #1E3A8A;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .search-bar i:hover {
-            color: #f97316;
+            color: #F59E0B;
         }
 
         .search-results {
@@ -171,101 +208,108 @@
             position: absolute;
             top: 100%;
             right: 20px;
-            background: #ffffff;
-            min-width: 220px;
+            background: #FFFFFF;
+            min-width: 200px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
+            border-radius: 12px;
             z-index: 1000;
-            padding: 12px;
-            max-height: 320px;
+            padding: 10px;
+            max-height: 300px;
             overflow-y: auto;
         }
 
         .search-results a {
             display: block;
-            padding: 10px;
-            color: #182848;
+            padding: 8px;
+            color: #1E3A8A;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
             transition: background 0.2s ease;
         }
 
         .search-results a:hover {
-            background: #f97316;
-            color: #ffffff;
-            border-radius: 4px;
+            background: #F59E0B;
+            color: #FFFFFF;
+            border-radius: 8px;
         }
 
-        .social-nav-links {
-            display: flex;
-            gap: 12px;
+        .cta-button {
+            background: #F59E0B;
+            color: #FFFFFF;
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            min-width: 100px;
+            text-align: center;
         }
 
-        .social-nav-links a {
-            color: #ffffff;
-            font-size: 18px;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .social-nav-links a:hover {
-            color: #f97316;
+        .cta-button:hover {
+            background: #D97706;
             transform: translateY(-2px);
         }
 
-        .biashara-intro {
-            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
+        .biashara-hero {
+            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 50px 20px;
             width: 100%;
             box-sizing: border-box;
         }
 
-        .pop-words {
-            display: flex;
-            gap: 30px;
-        }
-
-        .word {
-            font-size: 32px;
-            font-weight: 800;
-            color: #182848;
+        .hero-content {
+            max-width: 700px;
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .word:nth-child(2) { transition-delay: 0.2s; }
-        .word:nth-child(3) { transition-delay: 0.4s; }
-
-        .biashara-intro.visible .word {
+        .biashara-hero.visible .hero-content {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .biashara-services, .biashara-loans, .biashara-membership {
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            padding: 40px 20px;
+            gap: 40px;
+            padding: 80px 20px;
             align-items: center;
             width: 100%;
             box-sizing: border-box;
         }
 
         .services-title, .loans-title, .membership-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: #182848;
+            font-size: 30px;
+            font-weight: 700;
+            color: #1E3A8A;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: static;
-            z-index: 10;
         }
 
         .biashara-services.visible .services-title,
@@ -280,7 +324,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
             justify-content: center;
             align-items: center;
             width: 100%;
@@ -288,22 +332,23 @@
         }
 
         .services, .loan-item, .membership-item {
-            width: 360px;
-            height: 360px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            width: 400px;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             opacity: 0;
-            transform: scale(0.9);
+            transform: scale(0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
-            border: 1px solid rgba(75, 108, 183, 0.1);
+            border: 1px solid rgba(30, 58, 138, 0.1);
+            position: relative;
         }
 
         .membership-item {
@@ -315,22 +360,22 @@
         }
 
         .membership-item::-webkit-scrollbar-track {
-            background: #f8fafc;
+            background: #F9FAFB;
             border-radius: 8px;
         }
 
         .membership-item::-webkit-scrollbar-thumb {
-            background: #4b6cb7;
+            background: #1E3A8A;
             border-radius: 8px;
         }
 
         .membership-item::-webkit-scrollbar-thumb:hover {
-            background: #f97316;
+            background: #F59E0B;
         }
 
         .services:hover, .loan-item:hover, .membership-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: scale(1.01);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
         .services.visible, .loan-item.visible, .membership-item.visible {
@@ -344,10 +389,10 @@
         .loan-item:nth-child(4) { transition-delay: 0.9s; }
 
         .service-title, .loan-title, .membership-benefit-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #182848;
-            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 18px;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -362,13 +407,13 @@
         }
 
         .service-description, .loan-description, .membership-description {
-            font-size: 13px;
+            font-size: 14px;
             color: #374151;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            line-height: 1.4;
-            max-height: 200px;
+            line-height: 1.5;
+            max-height: 240px;
         }
 
         .services.visible .service-description,
@@ -379,28 +424,50 @@
             transition-delay: 0.5s;
         }
 
+        .loan-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #F59E0B;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+        }
+
+        .membership-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .membership-details i {
+            color: #F59E0B;
+            font-size: 16px;
+            margin-top: 4px;
+        }
+
         .biashara-news {
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            padding: 40px 20px;
+            gap: 40px;
+            padding: 80px 20px;
             align-items: center;
             width: 100%;
             box-sizing: border-box;
         }
 
         .news-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: #182848;
+            font-size: 30px;
+            font-weight: 700;
+            color: #1E3A8A;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: static;
-            z-index: 10;
         }
 
         .biashara-news.visible .news-title {
@@ -412,34 +479,34 @@
         .news-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
             justify-content: center;
             width: 100%;
             max-width: 1280px;
         }
 
         .news-item {
-            width: 360px;
-            height: 360px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            width: 400px;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             opacity: 0;
-            transform: scale(0.9);
+            transform: scale(0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
-            border: 1px solid rgba(75, 108, 183, 0.1);
+            border: 1px solid rgba(30, 58, 138, 0.1);
         }
 
         .news-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: scale(1.01);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
         .news-item.visible {
@@ -452,9 +519,9 @@
         .news-item:nth-child(3) { transition-delay: 0.7s; }
 
         .news-item-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #182848;
+            font-size: 22px;
+            font-weight: 600;
+            color: #1E3A8A;
             margin-bottom: 10px;
             opacity: 0;
             transform: translateY(20px);
@@ -468,8 +535,8 @@
         }
 
         .news-date {
-            font-size: 14px;
-            color: #4b6cb7;
+            font-size: 13px;
+            color: #1E3A8A;
             margin-bottom: 10px;
             opacity: 0;
             transform: translateY(20px);
@@ -483,7 +550,7 @@
         }
 
         .news-description {
-            font-size: 15px;
+            font-size: 14px;
             color: #374151;
             opacity: 0;
             transform: translateY(20px);
@@ -499,7 +566,7 @@
         }
 
         .news-item a {
-            color: #f97316;
+            color: #F59E0B;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
@@ -515,16 +582,15 @@
         }
 
         .news-item a:hover {
-            color: #e55e0d;
+            color: #D97706;
         }
 
         .biashara-comments {
-            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
+            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
             position: relative;
-            padding: 40px;
+            padding: 80px 20px;
             width: 100%;
             box-sizing: border-box;
-            overflow: hidden;
             min-height: 600px;
             display: flex;
             justify-content: center;
@@ -532,19 +598,18 @@
         }
 
         .comments-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: #182848;
+            font-size: 30px;
+            font-weight: 700;
+            color: #1E3A8A;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 18px 36px;
             border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 10;
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.95);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            position: static;
         }
 
         .biashara-comments.visible .comments-title {
@@ -555,19 +620,19 @@
 
         .comment {
             position: absolute;
-            background: #ffffff;
-            padding: 15px;
-            width: 260px;
-            height: 90px;
+            background: #FFFFFF;
+            padding: 18px;
+            width: 300px;
+            height: 110px;
             border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
             opacity: 0;
             transition: opacity 0.6s ease, transform 0.3s ease, filter 0.3s ease;
             box-sizing: border-box;
-            border: 1px solid rgba(75, 108, 183, 0.1);
+            border: 1px solid rgba(30, 58, 138, 0.1);
         }
 
         .comment.under-title {
@@ -592,18 +657,17 @@
         .comment:nth-child(8) { transition-delay: 0.9s; }
         .comment:nth-child(9) { transition-delay: 1.0s; }
         .comment:nth-child(10) { transition-delay: 1.1s; }
-        .comment:nth-child(11) { transition-delay: 1.2s; }
 
         .comment-profile-pic {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: #1E3A8A;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            font-weight: bold;
+            color: #FFFFFF;
+            font-weight: 600;
             font-size: 16px;
         }
 
@@ -613,26 +677,26 @@
 
         .comment-name {
             font-weight: 600;
-            color: #182848;
+            color: #1E3A8A;
             margin-bottom: 6px;
             font-size: 14px;
         }
 
         .comment-text {
-            font-size: 12px;
+            font-size: 13px;
             color: #374151;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .biashara-career {
-            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
+            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
             width: 100%;
             box-sizing: border-box;
         }
 
         .biashara-principles {
-            background: linear-gradient(180deg, #f8fafc 0%, #e5e7eb 100%);
-            padding: 50px 30px;
+            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
+            padding: 80px 20px;
             width: 100%;
             box-sizing: border-box;
             text-align: left;
@@ -643,7 +707,7 @@
         .principles-content {
             display: flex;
             flex-direction: row;
-            gap: 20px;
+            gap: 40px;
             width: 100%;
         }
 
@@ -656,21 +720,21 @@
         }
 
         .principles-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #f97316;
-            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-bottom: 18px;
         }
 
         .principles-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .principle-item {
-            font-size: 16px;
-            color: #f97316;
+            font-size: 15px;
+            color: #374151;
             line-height: 1.5;
             position: relative;
             padding-left: 25px;
@@ -680,15 +744,15 @@
             content: '•';
             position: absolute;
             left: 0;
-            color: #f97316;
+            color: #F59E0B;
             font-size: 20px;
             line-height: 1.5;
         }
 
         .biashara-footer {
-            background: linear-gradient(135deg, #182848 0%, #2c2929 100%);
-            padding: 50px 30px;
-            color: #f97316;
+            background: linear-gradient(135deg, #D97706 0%, #7C2D12 100%);
+            padding: 80px 20px;
+            color: #FFFFFF;
             width: 100%;
             box-sizing: border-box;
         }
@@ -698,55 +762,88 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            padding-bottom: 30px;
+            gap: 40px;
+            padding-bottom: 40px;
             box-sizing: border-box;
         }
 
         .footer-column {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .footer-column h4 {
             font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FFFFFF;
         }
 
         .footer-column a {
-            color: #d1d5db;
+            color: #E5E7EB;
             text-decoration: none;
             font-size: 15px;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .footer-column a:hover {
-            color: #f97316;
+            color: #F59E0B;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .newsletter-form button {
+            background: #F59E0B;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #D97706;
         }
 
         .social-links {
             display: flex;
-            gap: 18px;
+            gap: 20px;
         }
 
         .social-links a {
-            font-size: 22px;
-            color: #4b6cb7;
+            font-size: 20px;
+            color: #FFFFFF;
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-links a:hover {
-            color: #f97316;
+            color: #F59E0B;
             transform: translateY(-2px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(75, 108, 183, 0.2);
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -755,38 +852,38 @@
 
         .footer-bottom p {
             font-size: 14px;
-            color: #d1d5db;
+            color: #E5E7EB;
             margin: 5px 0;
             width: 100%;
             text-align: center;
         }
 
         .loan-details, .membership-details {
-            font-size: 13px;
+            font-size: 14px;
             color: #374151;
-            line-height: 1.4;
+            line-height: 1.5;
             text-align: left;
         }
 
         .loan-details li, .membership-details li {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 1024px) {
             .biashara {
-                grid-template-rows: min-content 600px min-content min-content min-content min-content 600px min-content min-content;
+                grid-template-rows: min-content 400px min-content min-content min-content min-content 600px min-content min-content;
             }
 
             .biashara-nav {
                 padding: 12px 15px;
             }
 
-            .head {
-                font-size: 24px;
+            .nav-container {
+                gap: 15px;
             }
 
-            .nav-content {
-                gap: 15px;
+            .head span {
+                font-size: 20px;
             }
 
             .links {
@@ -794,50 +891,67 @@
             }
 
             .links-child {
-                font-size: 15px;
-                padding: 8px;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .search-bar {
+                max-width: 160px;
             }
 
             .search-bar input {
-                width: 120px;
-                font-size: 14px;
+                font-size: 13px;
+            }
+
+            .cta-button {
+                padding: 6px 14px;
+                font-size: 13px;
+                min-width: 80px;
+            }
+
+            .biashara-hero {
+                padding: 40px 15px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-description {
+                font-size: 15px;
             }
 
             .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 60px 15px 30px;
-                min-height: 100px;
+                padding: 60px 15px;
             }
 
             .services, .loan-item, .membership-item, .news-item {
-                width: 320px;
-                height: 320px;
+                width: 360px;
+                height: 360px;
             }
 
             .service-title, .loan-title, .membership-benefit-title, .news-item-title {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 12px;
-                max-height: 180px;
+                font-size: 13px;
+                max-height: 200px;
             }
 
             .comment {
-                width: 260px;
-                height: 90px;
-            }
-
-            .comment-text {
-                font-size: 12px;
+                width: 280px;
+                height: 100px;
             }
 
             .principles-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
             }
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
         }
 
@@ -846,21 +960,21 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: 28px;
-                height: 20px;
+                width: 26px;
+                height: 18px;
                 cursor: pointer;
                 margin-left: 10px;
             }
 
             .hamburger span {
-                background: #ffffff;
-                height: 3px;
+                background: #FFFFFF;
+                height: 2px;
                 border-radius: 2px;
                 transition: all 0.3s ease;
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
+                transform: rotate(45deg) translate(4px, 4px);
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(2) {
@@ -868,18 +982,18 @@
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
+                transform: rotate(-45deg) translate(6px, -6px);
             }
 
             .nav-content {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 80px;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                background: #182848;
-                padding: 15px;
+                background: #1E3A8A;
+                padding: 12px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                 align-items: flex-start;
                 box-sizing: border-box;
@@ -893,18 +1007,18 @@
                 flex-direction: column;
                 width: 100%;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 8px;
             }
 
             .links-child {
-                padding: 12px;
-                font-size: 15px;
-                color: #ffffff;
+                padding: 10px;
+                font-size: 14px;
+                color: #FFFFFF;
             }
 
             .dropdown-menu {
                 position: static;
-                background: rgba(24, 40, 72, 0.95);
+                background: rgba(30, 58, 138, 0.95);
                 box-shadow: none;
                 transform: none;
                 opacity: 1;
@@ -919,48 +1033,52 @@
 
             .search-bar {
                 margin-left: 10px;
-                padding: 6px 10px;
+                padding: 5px 8px;
+                max-width: 140px;
             }
 
             .search-bar input {
-                width: 100px;
+                font-size: 13px;
+            }
+
+            .cta-button {
+                padding: 6px 12px;
+                font-size: 13px;
+                min-width: 80px;
+            }
+
+            .biashara-hero {
+                padding: 30px 10px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
                 font-size: 14px;
             }
 
-            .social-nav-links {
-                margin-top: 10px;
-                gap: 10px;
-            }
-
-            .social-nav-links a {
-                font-size: 16px;
-            }
-
             .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 60px 10px 20px;
-                min-height: 100px;
+                padding: 50px 10px;
             }
 
             .services, .loan-item, .membership-item, .news-item {
-                width: 300px;
-                height: 300px;
+                width: 340px;
+                height: 340px;
                 margin: 0 auto;
             }
 
             .news-container, .loans-container, .membership-container {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 30px;
                 justify-items: center;
             }
 
             .comment {
                 width: 260px;
                 height: 90px;
-            }
-
-            .comment-text {
-                font-size: 12px;
             }
 
             .footer-content {
@@ -971,20 +1089,30 @@
 
         @media (max-width: 500px) {
             .biashara {
-                grid-template-rows: min-content 600px min-content min-content min-content min-content 600px min-content min-content;
+                grid-template-rows: min-content 350px min-content min-content min-content min-content 600px min-content min-content;
             }
 
             .biashara-nav {
                 padding: 10px 12px;
             }
 
-            .head {
-                font-size: 20px;
+            .nav-container {
+                gap: 10px;
+            }
+
+            .head span {
+                font-size: 18px;
+            }
+
+            .logo {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
             }
 
             .hamburger {
-                width: 24px;
-                height: 18px;
+                width: 22px;
+                height: 16px;
             }
 
             .hamburger span {
@@ -992,50 +1120,63 @@
             }
 
             .nav-content {
-                top: 70px;
-                padding: 12px;
-            }
-
-            .links-child {
-                font-size: 14px;
+                top: 60px;
                 padding: 10px;
             }
 
+            .links-child {
+                font-size: 13px;
+                padding: 8px;
+            }
+
             .search-bar {
-                padding: 5px 8px;
+                padding: 4px 6px;
+                max-width: 120px;
             }
 
             .search-bar input {
-                width: 80px;
+                font-size: 12px;
+            }
+
+            .cta-button {
+                padding: 5px 10px;
+                font-size: 12px;
+                min-width: 70px;
+            }
+
+            .biashara-hero {
+                padding: 20px 10px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .hero-description {
                 font-size: 13px;
             }
 
-            .social-nav-links a {
-                font-size: 14px;
-            }
-
             .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
-                padding: 60px 10px 20px;
-                min-height: 100px;
+                padding: 40px 10px;
             }
 
             .services, .loan-item, .membership-item, .news-item {
-                width: 280px;
-                height: 280px;
+                width: 300px;
+                height: 300px;
                 margin: 0 auto;
             }
 
             .services-title, .loans-title, .membership-title, .news-title {
-                font-size: 28px;
+                font-size: 26px;
             }
 
             .service-title, .loan-title, .membership-benefit-title, .news-item-title {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 11px;
-                max-height: 160px;
+                font-size: 12px;
+                max-height: 180px;
             }
 
             .comment {
@@ -1050,7 +1191,7 @@
             }
 
             .comment-name {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .comment-text {
@@ -1065,8 +1206,12 @@
             .news-container, .loans-container, .membership-container {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 20px;
                 justify-items: center;
+            }
+
+            .newsletter-form input {
+                max-width: 200px;
             }
         }
     </style>
@@ -1074,54 +1219,55 @@
 <body>
     <div class="biashara">
         <div class="biashara-nav">
-            <div class="head">Biashara</div>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <div class="nav-content">
-                <div class="links">
-                    <a class="links-child" href="index.html" data-search="Home">Home</a>
-                    <a class="links-child" href="about.html" data-search="Home">About Us</a>
-                    <a class="links-child" href="services.html" data-search="Home">Services</a>
-                    <a class="links-child" href="news.html" data-search="Contact">News</a>
-                    <a class="links-child" href="#contact" data-search="Contact">Contact</a>
+            <div class="nav-container">
+                <div class="head">
+                    <div class="logo">BS</div>
+                    <span>Biashara Sacco</span>
                 </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search..." id="search-input">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="search-results" id="search-results"></div>
-                <div class="social-nav-links">
-                    <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://linkedin.com/company/biashara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="nav-content">
+                    <div class="links">
+                        <a class="links-child" href="index.html" data-search="Home">Home</a>
+                        <a class="links-child" href="about.html" data-search="About">About Us</a>
+                        <a class="links-child" href="services.html" data-search="Services">Services</a>
+                        <a class="links-child" href="news.html" data-search="News">News</a>
+                        <a class="links-child" href="#contact" data-search="Contact">Contact</a>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search..." id="search-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="search-results" id="search-results"></div>
+                    <a href="#join" class="cta-button">Join Now</a>
                 </div>
             </div>
         </div>
-        <div class="biashara-intro">
-            <div class="pop-words">
-                <span class="word">Save</span>
-                <span class="word">Borrow</span>
-                <span class="word">Grow</span>
+        <div class="biashara-hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Empowering Your Financial Future</h1>
+                <p class="hero-description">Join Biashara Sacco for tailored savings, loans, and financial solutions to help you grow.</p>
+                <a href="#join" class="cta-button">Join Today</a>
             </div>
         </div>
         <div class="biashara-services">
-            <div class="services-title">Services We Offer</div>
+            <div class="services-title">Our Services</div>
             <div class="services-container">
                 <div class="services" data-search="Consulting">
-                    <div class="service-title">Consulting</div>
-                    <p class="service-description">Expert business advice to help your company thrive in competitive markets.</p>
+                    <div class="service-title">Financial Consulting</div>
+                    <p class="service-description">Expert advice to help you manage and grow your finances with confidence.</p>
                 </div>
                 <div class="services" data-search="Support">
-                    <div class="service-title">Support</div>
-                    <p class="service-description">24/7 customer support to ensure your operations run smoothly.</p>
+                    <div class="service-title">Member Support</div>
+                    <p class="service-description">24/7 support to ensure your financial needs are met promptly.</p>
                 </div>
                 <div class="services" data-search="Training">
-                    <div class="service-title">Training</div>
-                    <p class="service-description">Professional training programs to empower your team with new skills.</p>
+                    <div class="service-title">Financial Education</div>
+                    <p class="service-description">Workshops and programs to empower you with financial knowledge.</p>
                 </div>
             </div>
         </div>
@@ -1171,6 +1317,7 @@
                 </div>
                 <div class="loan-item">
                     <div class="loan-title">InstantPesa Loan</div>
+                    <div class="loan-badge">New!</div>
                     <div class="loan-description">
                         <ul class="loan-details">
                             <li>Target: All members</li>
@@ -1192,14 +1339,14 @@
                     <div class="membership-benefit-title">Membership Benefits</div>
                     <div class="membership-description">
                         <ul class="membership-details">
-                            <li>Earn high interest on deposits and dividends</li>
-                            <li>Access higher loan limits (up to 5x shares)</li>
-                            <li>Right to vote and participate in decision-making</li>
-                            <li>Transferable shares for Sacco ownership</li>
-                            <li>Flexible banking with door-to-door services</li>
-                            <li>Free financial literacy programs</li>
-                            <li>Priority access to new loan products</li>
-                            <li>Exclusive member events and networking</li>
+                            <li><i class="fas fa-check-circle"></i>Earn high interest on deposits and dividends</li>
+                            <li><i class="fas fa-check-circle"></i>Access higher loan limits (up to 5x shares)</li>
+                            <li><i class="fas fa-check-circle"></i>Right to vote and participate in decision-making</li>
+                            <li><i class="fas fa-check-circle"></i>Transferable shares for Sacco ownership</li>
+                            <li><i class="fas fa-check-circle"></i>Flexible banking with door-to-door services</li>
+                            <li><i class="fas fa-check-circle"></i>Free financial literacy programs</li>
+                            <li><i class="fas fa-check-circle"></i>Priority access to new loan products</li>
+                            <li><i class="fas fa-check-circle"></i>Exclusive member events and networking</li>
                         </ul>
                     </div>
                 </div>
@@ -1212,18 +1359,18 @@
             </div>
         </div>
         <div class="biashara-news">
-            <h2 class="news-title">News & Articles</h2>
+            <h2 class="news-title">News & Updates</h2>
             <div class="news-container">
                 <div class="news-item">
                     <h3 class="news-item-title">New Product Launch</h3>
                     <p class="news-date">20 Jul, 2025</p>
-                    <p class="news-description">Discover our latest software solution designed to boost productivity.</p>
+                    <p class="news-description">Discover our latest financial solution designed to boost your savings.</p>
                     <a href="#news-product">Read More</a>
                 </div>
                 <div class="news-item">
-                    <h3 class="news-item-title">Industry Trends 2025</h3>
+                    <h3 class="news-item-title">Financial Trends 2025</h3>
                     <p class="news-date">10 Jul, 2025</p>
-                    <p class="news-description">Stay ahead with our insights on the top business trends for the year.</p>
+                    <p class="news-description">Stay informed with our insights on the top financial trends for the year.</p>
                     <a href="#news-trends">Read More</a>
                 </div>
                 <div class="news-item">
@@ -1235,75 +1382,75 @@
             </div>
         </div>
         <div class="biashara-comments">
-            <div class="comments-title">Our Members Say</div>
+            <div class="comments-title">What Our Members Say</div>
             <div class="comment">
                 <div class="comment-profile-pic">JM</div>
                 <div class="comment-content">
                     <div class="comment-name">Jane M.</div>
-                    <div class="comment-text">Great service! Boosted my sales.</div>
+                    <div class="comment-text">Biashara Sacco helped me secure my dream home!</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">PK</div>
                 <div class="comment-content">
                     <div class="comment-name">Peter K.</div>
-                    <div class="comment-text">Amazing support team!</div>
+                    <div class="comment-text">Quick loan approvals and great support!</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">AN</div>
                 <div class="comment-content">
                     <div class="comment-name">Aisha N.</div>
-                    <div class="comment-text">Loved the training program.</div>
+                    <div class="comment-text">The financial workshops are a game-changer.</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">DO</div>
                 <div class="comment-content">
                     <div class="comment-name">David O.</div>
-                    <div class="comment-text">Top-notch products!</div>
+                    <div class="comment-text">Trusted partner for my business growth.</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">MW</div>
                 <div class="comment-content">
                     <div class="comment-name">Mary W.</div>
-                    <div class="comment-text">Highly recommend!</div>
+                    <div class="comment-text">Highly recommend their loan products!</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">JT</div>
                 <div class="comment-content">
                     <div class="comment-name">John T.</div>
-                    <div class="comment-text">Transformed my business.</div>
+                    <div class="comment-text">Transformed my savings strategy.</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">SL</div>
                 <div class="comment-content">
                     <div class="comment-name">Sarah L.</div>
-                    <div class="comment-text">Excellent consulting!</div>
+                    <div class="comment-text">Excellent service and community focus!</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">MR</div>
                 <div class="comment-content">
                     <div class="comment-name">Michael R.</div>
-                    <div class="comment-text">Reliable solutions.</div>
+                    <div class="comment-text">Reliable financial solutions.</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">FS</div>
                 <div class="comment-content">
                     <div class="comment-name">Fatima S.</div>
-                    <div class="comment-text">Great experience!</div>
+                    <div class="comment-text">A great experience with Biashara!</div>
                 </div>
             </div>
             <div class="comment">
                 <div class="comment-profile-pic">JP</div>
                 <div class="comment-content">
                     <div class="comment-name">James P.</div>
-                    <div class="comment-text">Superb customer care!</div>
+                    <div class="comment-text">Superb member care!</div>
                 </div>
             </div>
         </div>
@@ -1313,10 +1460,10 @@
                 <div class="principles-column">
                     <h2 class="principles-title">Core Values</h2>
                     <div class="principles-list">
-                        <p>Guided by godly and cooperative principles, the Sacco's core values are:</p>
+                        <p>Guided by cooperative principles, our core values are:</p>
                         <p class="principle-item">Integrity</p>
                         <p class="principle-item">Transparency</p>
-                        <p class="principle-item">Member focus</p>
+                        <p class="principle-item">Member Focus</p>
                         <p class="principle-item">Professionalism</p>
                     </div>
                 </div>
@@ -1326,9 +1473,9 @@
                         <p class="principle-item">Open and voluntary membership</p>
                         <p class="principle-item">Autonomy and independence</p>
                         <p class="principle-item">Democratic member control</p>
-                        <p class="principle-item">Education, information and training and economic participation of members</p>
-                        <p class="principle-item">Cooperation among cooperative members</p>
-                        <p class="principle-item">Concern for community in general</p>
+                        <p class="principle-item">Education, information, and training</p>
+                        <p class="principle-item">Cooperation among members</p>
+                        <p class="principle-item">Concern for community</p>
                     </div>
                 </div>
             </div>
@@ -1357,9 +1504,13 @@
                     <a href="#privacy" data-search="Privacy Policy">Privacy Policy</a>
                 </div>
                 <div class="footer-column">
-                    <h4>Connect</h4>
+                    <h4>Stay Connected</h4>
                     <p>Email: contact@biashara.com</p>
                     <p>Phone: +254 123 456 789</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" id="newsletter-input">
+                        <button type="button" id="newsletter-submit">Subscribe</button>
+                    </div>
                     <div class="social-links">
                         <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -1368,8 +1519,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Biashara Inc. | 123 Business Avenue, Nairobi, Kenya</p>
-                <p>© 2025 Biashara Inc. All rights reserved.</p>
+                <p>Biashara Sacco | 123 Business Avenue, Nairobi, Kenya</p>
+                <p>© 2025 Biashara Sacco. All rights reserved.</p>
             </div>
         </div>
     </div>
@@ -1383,7 +1534,7 @@
             const membershipItems = document.querySelectorAll('.membership-item');
             const comments = document.querySelectorAll('.comment');
             const newsItems = document.querySelectorAll('.news-item');
-            const intro = document.querySelector('.biashara-intro');
+            const hero = document.querySelector('.biashara-hero');
             const servicesSection = document.querySelector('.biashara-services');
             const loansSection = document.querySelector('.biashara-loans');
             const membershipSection = document.querySelector('.biashara-membership');
@@ -1396,22 +1547,23 @@
             const commentsTitle = document.querySelector('.comments-title');
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
+            const newsletterSubmit = document.getElementById('newsletter-submit');
+            const newsletterInput = document.getElementById('newsletter-input');
             let lastScroll = 0;
 
             const searchableItems = [
                 { name: 'Home', href: '#home' },
+                { name: 'About', href: '#about' },
+                { name: 'Services', href: '#services' },
+                { name: 'News', href: '#news' },
+                { name: 'Contact', href: '#contact' },
                 { name: 'Our Team', href: '#about-team' },
                 { name: 'Mission', href: '#about-mission' },
                 { name: 'History', href: '#about-history' },
                 { name: 'Consulting', href: '#services-consulting' },
                 { name: 'Support', href: '#services-support' },
                 { name: 'Training', href: '#services-training' },
-                { name: 'Software', href: '#products-software' },
-                { name: 'Hardware', href: '#products-hardware' },
-                { name: 'Solutions', href: '#products-solutions' },
-                { name: 'Contact', href: '#contact' },
                 { name: 'Careers', href: '#careers' },
-                { name: 'Custom Solutions', href: '#services-custom' },
                 { name: 'FAQ', href: '#faq' },
                 { name: 'Terms of Service', href: '#terms' },
                 { name: 'Privacy Policy', href: '#privacy' }
@@ -1471,7 +1623,7 @@
             titleObserver.observe(membershipTitle);
             titleObserver.observe(newsTitle);
             titleObserver.observe(commentsTitle);
-            contentObserver.observe(intro);
+            contentObserver.observe(hero);
             contentObserver.observe(servicesSection);
             contentObserver.observe(loansSection);
             contentObserver.observe(membershipSection);
@@ -1491,17 +1643,29 @@
                 return array;
             }
 
+            let resizeTimeout;
+            function debounce(func, wait) {
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(resizeTimeout);
+                        func(...args);
+                    };
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(later, wait);
+                };
+            }
+
             function positionComments() {
                 const commentsContainer = document.querySelector('.biashara-comments');
                 const commentsTitle = document.querySelector('.comments-title');
                 const containerWidth = commentsContainer.offsetWidth;
                 const containerHeight = commentsContainer.offsetHeight;
-                const commentWidth = window.innerWidth <= 500 ? 220 : 260;
-                const commentHeight = window.innerWidth <= 500 ? 80 : 90;
+                const commentWidth = window.innerWidth <= 500 ? 220 : window.innerWidth <= 768 ? 260 : 300;
+                const commentHeight = window.innerWidth <= 500 ? 80 : window.innerWidth <= 768 ? 90 : 110;
                 const titleWidth = commentsTitle.offsetWidth;
                 const titleHeight = commentsTitle.offsetHeight;
-                const padding = 20;
-                const maxComments = window.innerWidth <= 500 ? 5 : window.innerWidth <= 768 ? 6 : 10;
+                const padding = 30;
+                const maxComments = window.innerWidth <= 500 ? 4 : window.innerWidth <= 768 ? 6 : 8;
                 const positions = [];
                 const commentArray = shuffleArray([...comments]);
 
@@ -1588,10 +1752,19 @@
                 }
             }
 
+            newsletterSubmit.addEventListener('click', () => {
+                const email = newsletterInput.value.trim();
+                if (email) {
+                    console.log(`Newsletter subscription: ${email}`);
+                    newsletterInput.value = '';
+                    alert('Thank you for subscribing!');
+                }
+            });
+
             searchInput.addEventListener('input', handleSearch);
             searchInput.addEventListener('focus', handleSearch);
             positionComments();
-            window.addEventListener('resize', positionComments);
+            window.addEventListener('resize', debounce(positionComments, 200));
         });
     </script>
 </body>
