@@ -306,6 +306,28 @@
             border: 1px solid rgba(75, 108, 183, 0.1);
         }
 
+        .membership-item {
+            overflow-y: auto;
+        }
+
+        .membership-item::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .membership-item::-webkit-scrollbar-track {
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .membership-item::-webkit-scrollbar-thumb {
+            background: #4b6cb7;
+            border-radius: 8px;
+        }
+
+        .membership-item::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
+
         .services:hover, .loan-item:hover, .membership-item:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -318,7 +340,8 @@
 
         .services:nth-child(1), .loan-item:nth-child(1), .membership-item:nth-child(1) { transition-delay: 0.3s; }
         .services:nth-child(2), .loan-item:nth-child(2), .membership-item:nth-child(2) { transition-delay: 0.5s; }
-        .services:nth-child(3), .loan-item:nth-child(3), .membership-item:nth-child(3) { transition-delay: 0.7s; }
+        .services:nth-child(3), .loan-item:nth-child(3) { transition-delay: 0.7s; }
+        .loan-item:nth-child(4) { transition-delay: 0.9s; }
 
         .service-title, .loan-title, .membership-benefit-title {
             font-size: 24px;
@@ -339,12 +362,13 @@
         }
 
         .service-description, .loan-description, .membership-description {
-            font-size: 15px;
+            font-size: 13px;
             color: #374151;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            line-height: 1.5;
+            line-height: 1.4;
+            max-height: 200px;
         }
 
         .services.visible .service-description,
@@ -738,14 +762,14 @@
         }
 
         .loan-details, .membership-details {
-            font-size: 14px;
+            font-size: 13px;
             color: #374151;
-            line-height: 1.6;
+            line-height: 1.4;
             text-align: left;
         }
 
         .loan-details li, .membership-details li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         @media (max-width: 1024px) {
@@ -794,7 +818,8 @@
             }
 
             .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 14px;
+                font-size: 12px;
+                max-height: 180px;
             }
 
             .comment {
@@ -1009,7 +1034,8 @@
             }
 
             .service-description, .loan-description, .membership-description, .news-description {
-                font-size: 13px;
+                font-size: 11px;
+                max-height: 160px;
             }
 
             .comment {
@@ -1143,6 +1169,20 @@
                         </ul>
                     </div>
                 </div>
+                <div class="loan-item">
+                    <div class="loan-title">InstantPesa Loan</div>
+                    <div class="loan-description">
+                        <ul class="loan-details">
+                            <li>Target: All members</li>
+                            <li>Features: Quick cash for emergencies</li>
+                            <li>Requirement: Active savings account</li>
+                            <li>Facility: Up to Kshs. 50,000</li>
+                            <li>Interest: 8% p.a.</li>
+                            <li>Repayment: 1-6 months</li>
+                            <li>Waiting Period: Same day</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="biashara-membership">
@@ -1157,6 +1197,9 @@
                             <li>Right to vote and participate in decision-making</li>
                             <li>Transferable shares for Sacco ownership</li>
                             <li>Flexible banking with door-to-door services</li>
+                            <li>Free financial literacy programs</li>
+                            <li>Priority access to new loan products</li>
+                            <li>Exclusive member events and networking</li>
                         </ul>
                     </div>
                 </div>
