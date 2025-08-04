@@ -36,82 +36,55 @@
         }
 
         .biashara-nav {
-            background: var(--primary-blue);
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            display: flex;
+            align-items: center;
             padding: 15px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .biashara-nav.hidden {
             transform: translateY(-100%);
         }
 
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1280px;
-            margin: 0 auto;
-            gap: 20px;
-        }
-
         .head {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 180px;
-        }
-
-        .logo {
-            width: 36px;
-            height: 36px;
-            background: var(--primary-orange);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-white);
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .head span {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary-white);
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-right: auto;
+            letter-spacing: 1px;
         }
 
         .nav-content {
             display: flex;
             align-items: center;
             gap: 20px;
-            flex: 1;
-            justify-content: center;
         }
 
         .links {
             display: flex;
             gap: 20px;
             align-items: center;
-            justify-content: center;
-            flex: 1;
         }
 
         .links-child {
-            color: var(--primary-white);
-            font-size: 15px;
-            font-weight: 500;
+            color: #ffffff;
+            font-size: 16px;
             text-decoration: none;
-            padding: 8px 12px;
+            padding: 10px;
             position: relative;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .links-child:hover {
-            color: var(--primary-orange);
+            color: #f97316;
+            transform: translateY(-2px);
         }
 
         .links-child:hover::after {
@@ -119,7 +92,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: var(--primary-orange);
+            background: #f97316;
             bottom: 0;
             left: 0;
         }
@@ -128,41 +101,49 @@
             position: relative;
         }
 
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--primary-blue);
-            min-width: 180px;
+            background: rgba(24, 40, 72, 0.95);
+            min-width: 200px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
+            border-radius: 8px;
             z-index: 1000;
-            padding: 8px 0;
+            padding: 10px 0;
+            transform: scale(0.9);
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: top center;
+            animation: jelly 0.4s ease forwards;
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes jelly {
+            0% { transform: scale(0.9, 0.9); opacity: 0; }
+            50% { transform: scale(1.1, 0.9); opacity: 0.8; }
+            100% { transform: scale(1, 1); opacity: 1; }
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 10px 18px;
-            color: var(--primary-white);
+            padding: 12px 20px;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 15px;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
         .dropdown-menu a:hover {
-            background: var(--primary-orange);
-            color: var(--primary-white);
+            background: #f97316;
+            color: #ffffff;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
 
         .nav-toggle, .hamburger {
@@ -172,31 +153,29 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: var(--primary-white);
+            background: #ffffff;
             border-radius: 25px;
-            padding: 6px 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 200px;
-            flex-grow: 1;
+            padding: 8px 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar input {
             border: none;
             outline: none;
-            font-size: 14px;
-            color: var(--primary-blue);
-            width: 100%;
-            padding: 4px;
+            font-size: 15px;
+            color: #182848;
+            width: 160px;
+            padding: 5px;
         }
 
         .search-bar i {
-            color: var(--primary-blue);
+            color: #4b6cb7;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .search-bar i:hover {
-            color: var(--primary-orange);
+            color: #f97316;
         }
 
         .search-results {
@@ -204,47 +183,44 @@
             position: absolute;
             top: 100%;
             right: 20px;
-            background: var(--primary-white);
-            min-width: 200px;
+            background: #ffffff;
+            min-width: 220px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            border-radius: 12px;
+            border-radius: 8px;
             z-index: 1000;
-            padding: 10px;
-            max-height: 300px;
+            padding: 12px;
+            max-height: 320px;
             overflow-y: auto;
         }
 
         .search-results a {
             display: block;
-            padding: 8px;
-            color: var(--primary-blue);
+            padding: 10px;
+            color: #182848;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
             transition: background 0.2s ease;
         }
 
         .search-results a:hover {
-            background: var(--primary-orange);
-            color: var(--primary-white);
-            border-radius: 8px;
+            background: #f97316;
+            color: #ffffff;
+            border-radius: 4px;
         }
 
-        .cta-button {
-            background: var(--primary-orange);
-            color: var(--primary-white);
-            padding: 8px 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background 0.3s ease, transform 0.2s ease;
-            min-width: 100px;
-            text-align: center;
+        .social-nav-links {
+            display: flex;
+            gap: 12px;
         }
 
-        .cta-button:hover {
-            background: #D97706;
+        .social-nav-links a {
+            color: #ffffff;
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-nav-links a:hover {
+            color: #f97316;
             transform: translateY(-2px);
         }
 
@@ -283,6 +259,24 @@
             color: var(--secondary-gray);
             margin-bottom: 25px;
             line-height: 1.5;
+        }
+
+        .cta-button {
+            background: var(--primary-orange);
+            color: var(--primary-white);
+            padding: 8px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background: #D97706;
+            transform: translateY(-2px);
         }
 
         .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
@@ -661,6 +655,32 @@
                 grid-template-rows: min-content 400px repeat(7, min-content);
             }
 
+            .biashara-nav {
+                padding: 12px 15px;
+            }
+
+            .head {
+                font-size: 24px;
+            }
+
+            .nav-content {
+                gap: 15px;
+            }
+
+            .links {
+                gap: 15px;
+            }
+
+            .links-child {
+                font-size: 15px;
+                padding: 8px;
+            }
+
+            .search-bar input {
+                width: 120px;
+                font-size: 14px;
+            }
+
             .services, .loan-item, .membership-item, .news-item {
                 width: 360px;
                 height: 360px;
@@ -676,20 +696,21 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: 26px;
-                height: 18px;
+                width: 28px;
+                height: 20px;
                 cursor: pointer;
+                margin-left: 10px;
             }
 
             .hamburger span {
-                background: var(--primary-white);
-                height: 2px;
+                background: #ffffff;
+                height: 3px;
                 border-radius: 2px;
                 transition: all 0.3s ease;
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(1) {
-                transform: rotate(45deg) translate(4px, 4px);
+                transform: rotate(45deg) translate(5px, 5px);
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(2) {
@@ -697,19 +718,21 @@
             }
 
             .nav-toggle:checked + .hamburger span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -6px);
+                transform: rotate(-45deg) translate(7px, -7px);
             }
 
             .nav-content {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 70px;
+                top: 80px;
                 left: 0;
                 width: 100%;
-                background: var(--primary-blue);
-                padding: 12px;
+                background: #182848;
+                padding: 15px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                align-items: flex-start;
+                box-sizing: border-box;
             }
 
             .nav-toggle:checked ~ .nav-content {
@@ -718,22 +741,49 @@
 
             .links {
                 flex-direction: column;
+                width: 100%;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 10px;
+            }
+
+            .links-child {
+                padding: 12px;
+                font-size: 15px;
+                color: #ffffff;
             }
 
             .dropdown-menu {
                 position: static;
-                background: rgba(30, 58, 138, 0.95);
+                background: rgba(24, 40, 72, 0.95);
                 box-shadow: none;
                 transform: none;
                 opacity: 1;
                 display: none;
                 border-radius: 0;
+                animation: none;
             }
 
             .dropdown.active .dropdown-menu {
                 display: block;
+            }
+
+            .search-bar {
+                margin-left: 10px;
+                padding: 6px 10px;
+            }
+
+            .search-bar input {
+                width: 100px;
+                font-size: 14px;
+            }
+
+            .social-nav-links {
+                margin-top: 10px;
+                gap: 10px;
+            }
+
+            .social-nav-links a {
+                font-size: 16px;
             }
 
             .services, .loan-item, .membership-item, .news-item {
@@ -753,6 +803,46 @@
                 grid-template-rows: min-content 350px repeat(7, min-content);
             }
 
+            .biashara-nav {
+                padding: 10px 12px;
+            }
+
+            .head {
+                font-size: 20px;
+            }
+
+            .hamburger {
+                width: 24px;
+                height: 18px;
+            }
+
+            .hamburger span {
+                height: 2px;
+            }
+
+            .nav-content {
+                top: 70px;
+                padding: 12px;
+            }
+
+            .links-child {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .search-bar {
+                padding: 5px 8px;
+            }
+
+            .search-bar input {
+                width: 80px;
+                font-size: 13px;
+            }
+
+            .social-nav-links a {
+                font-size: 14px;
+            }
+
             .services, .loan-item, .membership-item, .news-item {
                 width: 300px;
                 height: 300px;
@@ -770,42 +860,34 @@
 </head>
 <body>
     <div class="biashara">
-        <nav class="biashara-nav" aria-label="Main navigation">
-            <div class="nav-container">
-                <div class="head">
-                    <div class="logo">BS</div>
-                    <span>Biashara Sacco</span>
+        <div class="biashara-nav">
+            <div class="head">Biashara</div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-content">
+                <div class="links">
+                    <a class="links-child" href="index.html" data-search="Home">Home</a>
+                    <a class="links-child" href="about.html" data-search="Home">About Us</a>
+                    <a class="links-child" href="services.html" data-search="Home">Services</a>
+                    <a class="links-child" href="news.html" data-search="Contact">News</a>
+                    <a class="links-child" href="#contact" data-search="Contact">Contact</a>
                 </div>
-                <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-                <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <div class="nav-content">
-                    <div class="links">
-                        <a class="links-child" href="index.html" data-search="Home">Home</a>
-                        <a class="links-child" href="about.html" data-search="About">About Us</a>
-                        <div class="dropdown">
-                            <a class="links-child dropdown-toggle" href="services.html" data-search="Services">Services</a>
-                            <div class="dropdown-menu">
-                                <a href="#services-consulting">Consulting</a>
-                                <a href="#services-support">Support</a>
-                                <a href="#services-training">Training</a>
-                            </div>
-                        </div>
-                        <a class="links-child" href="news.html" data-search="News">News</a>
-                        <a class="links-child" href="#contact" data-search="Contact">Contact</a>
-                    </div>
-                    <div class="search-bar" role="search">
-                        <input type="text" placeholder="Search..." id="search-input" aria-label="Search">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </div>
-                    <div class="search-results" id="search-results"></div>
-                    <a href="#join" class="cta-button">Join Now</a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." id="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="search-results" id="search-results"></div>
+                <div class="social-nav-links">
+                    <a href="https://facebook.com/biashara" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/biashara" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/biashara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-        </nav>
+        </div>
         <section class="biashara-hero" aria-label="Hero section">
             <div class="hero-content">
                 <h1 class="hero-title">Empowering Your Financial Future</h1>
@@ -1077,33 +1159,34 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
             const nav = document.querySelector('.biashara-nav');
             const navToggle = document.getElementById('nav-toggle');
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
             const newsletterSubmit = document.getElementById('newsletter-submit');
             const newsletterInput = document.getElementById('newsletter-input');
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
             const sections = document.querySelectorAll('.biashara-hero, .biashara-services, .biashara-loans, .biashara-membership, .biashara-news, .biashara-comments');
             const items = document.querySelectorAll('.services, .loan-item, .membership-item, .news-item, .comment');
             let lastScroll = 0;
 
             const searchableItems = [
-                { name: 'Home', href: '#home' },
-                { name: 'About', href: '#about' },
-                { name: 'Services', href: '#services' },
-                { name: 'News', href: '#news' },
+                { name: 'Home', href: 'index.html#home' },
+                { name: 'About Us', href: 'about.html#home' },
+                { name: 'Services', href: 'services.html#home' },
+                { name: 'News', href: 'news.html#contact' },
                 { name: 'Contact', href: '#contact' },
                 { name: 'Our Team', href: '#about-team' },
                 { name: 'Mission', href: '#about-mission' },
                 { name: 'History', href: '#about-history' },
-                { name: 'Consulting', href: '#services-consulting' },
-                { name: 'Support', href: '#services-support' },
-                { name: 'Training', href: '#services-training' },
-                { name: 'Careers', href: '#careers' },
-                { name: 'FAQ', href: '#faq' },
-                { name: 'Terms of Service', href: '#terms' },
-                { name: 'Privacy Policy', href: '#privacy' }
+                { name: 'Consulting', href: 'index.html#services-consulting' },
+                { name: 'Support', href: 'index.html#services-support' },
+                { name: 'Training', href: 'index.html#services-training' },
+                { name: 'Careers', href: 'index.html#careers' },
+                { name: 'Custom Solutions', href: 'index.html#services-custom' },
+                { name: 'FAQ', href: 'index.html#faq' },
+                { name: 'Terms of Service', href: 'index.html#terms' },
+                { name: 'Privacy Policy', href: 'index.html#privacy' }
             ];
 
             const observer = new IntersectionObserver((entries) => {
@@ -1230,7 +1313,8 @@
                 toggle.addEventListener('click', (e) => {
                     if (window.innerWidth <= 768) {
                         e.preventDefault();
-                        toggle.parentElement.classList.toggle('active');
+                        const dropdown = toggle.closest('.dropdown');
+                        dropdown.classList.toggle('active');
                     }
                 });
             });
