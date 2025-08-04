@@ -16,6 +16,7 @@
             --light-gray: #F3F4F6;
             --secondary-gray: #1F2937;
             --border-blue: rgba(30, 64, 175, 0.15);
+            --footer-black: #111827;
         }
 
         * {
@@ -301,7 +302,7 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            padding: 80px 20px;
+            padding: 60px 20px;
             align-items: center;
         }
 
@@ -313,18 +314,6 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            position: relative;
-        }
-
-        .services-title::after, .loans-title::after, .membership-title::after, .news-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-orange);
-            transform: translateX(-50%);
         }
 
         .biashara-services.visible .services-title,
@@ -338,15 +327,15 @@
         .services-container, .loans-container, .membership-container, .news-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
             justify-content: center;
             max-width: 1280px;
             width: 100%;
         }
 
         .services, .loan-item, .membership-item, .news-item {
-            width: 400px;
-            height: 400px;
+            width: 360px;
+            height: 360px;
             background: var(--primary-white);
             border-radius: 16px;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
@@ -355,7 +344,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 2px solid var(--border-blue);
             position: relative;
@@ -456,8 +445,8 @@
 
         .biashara-comments {
             background: linear-gradient(180deg, var(--light-gray) 0%, var(--primary-white) 100%);
-            padding: 80px 20px;
-            min-height: 600px;
+            padding: 60px 20px;
+            min-height: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -465,7 +454,7 @@
         }
 
         .comments-title {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--primary-blue);
             text-align: center;
@@ -488,8 +477,8 @@
             position: absolute;
             background: var(--primary-white);
             padding: 18px;
-            width: 300px;
-            height: 110px;
+            width: 280px;
+            height: 100px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -558,7 +547,7 @@
 
         .biashara-principles {
             background: linear-gradient(180deg, var(--primary-white) 0%, var(--light-gray) 100%);
-            padding: 80px 20px;
+            padding: 60px 20px;
             max-width: 1280px;
             margin: 0 auto;
         }
@@ -566,7 +555,7 @@
         .principles-content {
             display: flex;
             flex-direction: row;
-            gap: 40px;
+            gap: 30px;
         }
 
         .principles-column {
@@ -617,9 +606,23 @@
         }
 
         .biashara-footer {
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
-            padding: 80px 20px;
+            background: var(--footer-black);
+            padding: 60px 20px;
             color: var(--primary-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biashara-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: 0;
         }
 
         .footer-content {
@@ -627,8 +630,10 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            gap: 30px;
             padding-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-column {
@@ -715,6 +720,8 @@
             text-align: center;
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-bottom p {
@@ -755,12 +762,14 @@
             }
 
             .services, .loan-item, .membership-item, .news-item {
-                width: 360px;
-                height: 360px;
+                width: 320px;
+                height: 320px;
+                padding: 20px;
             }
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
@@ -859,15 +868,45 @@
                 font-size: 16px;
             }
 
-            .services, .loan-item, .membership-item, .news-item {
-                width: 340px;
-                height: 340px;
+            .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
+                padding: 40px 15px;
             }
 
-            .news-container, .loans-container, .membership-container {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .services, .loan-item, .membership-item, .news-item {
+                width: 90%;
+                max-width: 340px;
+                height: auto;
+                min-height: 280px;
+                padding: 20px;
+                margin: 0 auto;
+            }
+
+            .service-title, .loan-title, .membership-benefit-title, .news-item-title {
+                font-size: 20px;
+            }
+
+            .service-description, .loan-description, .membership-description, .news-description {
+                font-size: 13px;
+            }
+
+            .biashara-comments {
+                min-height: 400px;
+                padding: 40px 15px;
+            }
+
+            .comments-title {
+                font-size: 24px;
+                padding: 15px 30px;
+            }
+
+            .comment {
+                width: 260px;
+                height: 90px;
+            }
+
+            .principles-content {
+                flex-direction: column;
+                gap: 20px;
             }
         }
 
@@ -916,9 +955,24 @@
                 font-size: 14px;
             }
 
+            .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
+                padding: 30px 10px;
+            }
+
             .services, .loan-item, .membership-item, .news-item {
-                width: 300px;
-                height: 300px;
+                width: 95%;
+                max-width: 300px;
+                min-height: 240px;
+                padding: 15px;
+            }
+
+            .service-title, .loan-title, .membership-benefit-title, .news-item-title {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .service-description, .loan-description, .membership-description, .news-description {
+                font-size: 12px;
             }
 
             .hero-title {
@@ -927,6 +981,44 @@
 
             .hero-description {
                 font-size: 13px;
+            }
+
+            .biashara-comments {
+                min-height: 350px;
+                padding: 30px 10px;
+            }
+
+            .comments-title {
+                font-size: 22px;
+                padding: 12px 24px;
+            }
+
+            .comment {
+                width: 240px;
+                height: 80px;
+            }
+
+            .comment-profile-pic {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .comment-name {
+                font-size: 13px;
+            }
+
+            .comment-text {
+                font-size: 12px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .footer-column {
+                padding: 15px;
             }
         }
     </style>
@@ -1311,11 +1403,11 @@
                 const comments = document.querySelectorAll('.comment');
                 const containerWidth = commentsContainer.offsetWidth;
                 const containerHeight = commentsContainer.offsetHeight;
-                const commentWidth = window.innerWidth <= 500 ? 220 : window.innerWidth <= 768 ? 260 : 300;
-                const commentHeight = window.innerWidth <= 500 ? 80 : window.innerWidth <= 768 ? 90 : 110;
+                const commentWidth = window.innerWidth <= 500 ? 240 : window.innerWidth <= 768 ? 260 : 280;
+                const commentHeight = window.innerWidth <= 500 ? 80 : window.innerWidth <= 768 ? 90 : 100;
                 const titleWidth = commentsTitle.offsetWidth;
                 const titleHeight = commentsTitle.offsetHeight;
-                const padding = 30;
+                const padding = 20;
                 const maxComments = window.innerWidth <= 500 ? 4 : window.innerWidth <= 768 ? 6 : 8;
                 const positions = [];
                 const commentArray = shuffleArray([...comments]);
