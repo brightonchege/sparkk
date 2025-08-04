@@ -4,691 +4,780 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Biashara Community Sacco</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #1E40AF;
+            --secondary-blue: #3B82F6;
+            --primary-orange: #F97316;
+            --secondary-orange: #FBBF24;
+            --primary-white: #FFFFFF;
+            --light-gray: #F3F4F6;
+            --secondary-gray: #1F2937;
+            --border-blue: rgba(30, 64, 175, 0.15);
+            --footer-black: #111827;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            margin:  0;
-            min-height:  100vh;
-            background-color:  #f9fafb;
-            font-family:  -apple-system,  BlinkMacSystemFont,  'Segoe  UI',  Roboto,  sans-serif;
-            overflow-x:  hidden;
+            min-height: 100vh;
+            background: var(--light-gray);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
         .biashara {
-            width:  100%;
-            max-width:  100%;
-            display:  flex;
-            flex-direction:  column;
-            box-sizing:  border-box;
-            overflow-x:  hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         .biashara-nav {
-            background:  linear-gradient(135deg,  #4b6cb7  0%,  #182848  100%);
-            display:  flex;
-            align-items:  center;
-            padding:  15px  20px;
-            box-shadow:  0  4px  10px  rgba(0,  0,  0,  0.15);
-            position:  sticky;
-            top:  0;
-            z-index:  1000;
-            transition:  transform  0.3s  ease;
-            width:  100%;
-            box-sizing:  border-box;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .biashara-nav.hidden {
-            transform:  translateY(-100%);
+            transform: translateY(-100%);
         }
 
         .head {
-            font-size:  28px;
-            font-weight:  800;
-            color:  #ffffff;
-            margin-right:  auto;
-            letter-spacing:  1px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-white);
+            margin-right: auto;
+            letter-spacing: 0.5px;
         }
 
         .nav-content {
-            display:  flex;
-            align-items:  center;
-            gap:  20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .links {
-            display:  flex;
-            gap:  20px;
-            align-items:  center;
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
 
         .links-child {
-            color:  #ffffff;
-            font-size:  16px;
-            text-decoration:  none;
-            padding:  10px;
-            position:  relative;
-            transition:  color  0.3s  ease,  transform  0.2s  ease;
+            color: var(--primary-white);
+            font-size: 16px;
+            text-decoration: none;
+            padding: 10px 12px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .links-child:hover {
-            color:  #f97316;
-            transform:  translateY(-2px);
+            color: var(--primary-orange);
+            transform: translateY(-2px);
         }
 
         .links-child:hover::after {
-            content:  '';
-            position:  absolute;
-            width:  100%;
-            height:  2px;
-            background:  #f97316;
-            bottom:  0;
-            left:  0;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-orange);
+            bottom: 0;
+            left: 0;
         }
 
         .dropdown {
-            position:  relative;
+            position: relative;
         }
 
         .dropdown-toggle {
-            cursor:  pointer;
+            cursor: pointer;
         }
 
         .dropdown-menu {
-            display:  none;
-            position:  absolute;
-            top:  100%;
-            left:  0;
-            background:  rgba(24,  40,  72,  0.95);
-            min-width:  200px;
-            box-shadow:  0  6px  15px  rgba(0,  0,  0,  0.2);
-            border-radius:  8px;
-            z-index:  1000;
-            padding:  10px  0;
-            transform:  scale(0.9);
-            opacity:  0;
-            transform-origin:  top  center;
-            animation:  jelly  0.4s  ease  forwards;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--primary-blue);
+            min-width: 200px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 10px 0;
+            transform: scale(0.9);
+            opacity: 0;
+            transform-origin: top center;
+            animation: jelly 0.4s ease forwards;
         }
 
-        @keyframes  jelly {
-            0%  {  transform:  scale(0.9,  0.9);  opacity:  0;  }
-            50%  {  transform:  scale(1.1,  0.9);  opacity:  0.8;  }
-            100%  {  transform:  scale(1,  1);  opacity:  1;  }
+        @keyframes jelly {
+            0% { transform: scale(0.9, 0.9); opacity: 0; }
+            50% { transform: scale(1.05, 0.95); opacity: 0.8; }
+            100% { transform: scale(1, 1); opacity: 1; }
         }
 
-        .dropdown-menu  a {
-            display:  block;
-            padding:  12px  20px;
-            color:  #ffffff;
-            text-decoration:  none;
-            font-size:  15px;
-            transition:  background  0.2s  ease,  color  0.2s  ease;
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary-white);
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
-        .dropdown-menu  a:hover {
-            background:  #f97316;
-            color:  #ffffff;
+        .dropdown-menu a:hover {
+            background: var(--secondary-orange);
+            color: var(--primary-white);
         }
 
-        .dropdown:hover  .dropdown-menu {
-            display:  block;
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
 
-        .nav-toggle,  .hamburger {
-            display:  none;
+        .nav-toggle, .hamburger {
+            display: none;
         }
 
         .search-bar {
-            display:  flex;
-            align-items:  center;
-            background:  #ffffff;
-            border-radius:  25px;
-            padding:  8px  12px;
-            box-shadow:  0  2px  5px  rgba(0,  0,  0,  0.1);
+            display: flex;
+            align-items: center;
+            background: var(--primary-white);
+            border-radius: 25px;
+            padding: 8px 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .search-bar  input {
-            border:  none;
-            outline:  none;
-            font-size:  15px;
-            color:  #182848;
-            width:  160px;
-            padding:  5px;
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 15px;
+            color: var(--secondary-gray);
+            width: 160px;
+            padding: 5px;
         }
 
-        .search-bar  i {
-            color:  #4b6cb7;
-            cursor:  pointer;
-            transition:  color  0.3s  ease;
+        .search-bar i {
+            color: var(--secondary-blue);
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .search-bar  i:hover {
-            color:  #f97316;
+        .search-bar i:hover {
+            color: var(--primary-orange);
         }
 
         .search-results {
-            display:  none;
-            position:  absolute;
-            top:  100%;
-            right:  20px;
-            background:  #ffffff;
-            min-width:  220px;
-            box-shadow:  0  6px  15px  rgba(0,  0,  0,  0.15);
-            border-radius:  8px;
-            z-index:  1000;
-            padding:  12px;
-            max-height:  320px;
-            overflow-y:  auto;
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background: var(--primary-white);
+            min-width: 220px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 12px;
+            max-height: 320px;
+            overflow-y: auto;
         }
 
-        .search-results  a {
-            display:  block;
-            padding:  10px;
-            color:  #182848;
-            text-decoration:  none;
-            font-size:  14px;
-            transition:  background  0.2s  ease;
+        .search-results a {
+            display: block;
+            padding: 10px;
+            color: var(--secondary-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s ease;
         }
 
-        .search-results  a:hover {
-            background:  #f97316;
-            color:  #ffffff;
-            border-radius:  4px;
+        .search-results a:hover {
+            background: var(--secondary-orange);
+            color: var(--primary-white);
+            border-radius: 4px;
         }
 
         .social-nav-links {
-            display:  flex;
-            gap:  12px;
+            display: flex;
+            gap: 12px;
         }
 
-        .social-nav-links  a {
-            color:  #ffffff;
-            font-size:  18px;
-            transition:  color  0.3s  ease,  transform  0.2s  ease;
+        .social-nav-links a {
+            color: var(--primary-white);
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
-        .social-nav-links  a:hover {
-            color:  #f97316;
-            transform:  translateY(-2px);
+        .social-nav-links a:hover {
+            color: var(--primary-orange);
+            transform: translateY(-2px);
         }
 
         .biashara-about {
-            background:  linear-gradient(180deg,  #f8fafc  0%,  #e5e7eb  100%);
-            padding:  60px  20px;
-            width:  100%;
-            box-sizing:  border-box;
-            display:  flex;
-            flex-direction:  column;
-            align-items:  center;
-            gap:  40px;
+            background: linear-gradient(180deg, var(--primary-white) 0%, var(--light-gray) 100%);
+            padding: 60px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
         }
 
         .about-title {
-            font-size:  36px;
-            font-weight:  800;
-            color:  #182848;
-            text-align:  center;
-            text-shadow:  0  2px  4px  rgba(0,  0,  0,  0.1);
-            position:  static;
-            z-index:  10;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .biashara-about.visible .about-title {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .about-section {
-            max-width:  1280px;
-            width:  100%;
-            display:  flex;
-            flex-direction:  column;
-            gap:  20px;
-            opacity:  0;
-            transform:  translateY(20px);
-            transition:  opacity  0.6s  ease,  transform  0.6s  ease;
+            max-width: 1280px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: var(--primary-white);
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border: 2px solid var(--border-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .about-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-orange);
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .about-section:hover::before {
+            transform: scaleX(1);
         }
 
         .about-section.visible {
-            opacity:  1;
-            transform:  translateY(0);
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .about-section  h2 {
-            font-size:  28px;
-            font-weight:  700;
-            color:  #182848;
-            text-align:  center;
-            text-shadow:  0  2px  4px  rgba(0,  0,  0,  0.1);
+        .about-section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-align: center;
         }
 
-        .about-section  p {
-            font-size:  16px;
-            color:  #374151;
-            line-height:  1.6;
-            text-align:  center;
+        .about-section p {
+            font-size: 16px;
+            color: var(--secondary-gray);
+            line-height: 1.6;
+            text-align: center;
         }
 
-        .about-section  ul {
-            list-style:  none;
-            padding:  0;
-            display:  flex;
-            flex-direction:  column;
-            gap:  10px;
-            max-width:  800px;
-            margin:  0  auto;
+        .about-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .about-section  li {
-            font-size:  16px;
-            color:  #374151;
-            line-height:  1.6;
-            position:  relative;
-            padding-left:  25px;
-            text-align:  left;
+        .about-section li {
+            font-size: 16px;
+            color: var(--secondary-gray);
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+            text-align: left;
         }
 
-        .about-section  li::before {
-            content:  '•';
-            position:  absolute;
-            left:  0;
-            color:  #f97316;
-            font-size:  20px;
-            line-height:  1.6;
+        .about-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-size: 20px;
         }
 
         .map-placeholder {
-            width:  100%;
-            max-width:  800px;
-            height:  400px;
-            background:  #e5e7eb;
-            border:  1px  solid  rgba(75,  108,  183,  0.2);
-            border-radius:  8px;
-            display:  flex;
-            align-items:  center;
-            justify-content:  center;
-            font-size:  16px;
-            color:  #374151;
-            text-align:  center;
-            margin:  0  auto;
-            opacity:  0;
-            transform:  translateY(20px);
-            transition:  opacity  0.6s  ease,  transform  0.6s  ease;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: var(--light-gray);
+            border: 2px solid var(--border-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--secondary-gray);
+            text-align: center;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .map-placeholder.visible {
-            opacity:  1;
-            transform:  translateY(0);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .biashara-principles {
-            background:  linear-gradient(180deg,  #f8fafc  0%,  #e5e7eb  100%);
-            padding:  50px  30px;
-            width:  100%;
-            box-sizing:  border-box;
-            text-align:  left;
-            max-width:  1280px;
-            margin:  0  auto;
+            background: linear-gradient(180deg, var(--primary-white) 0%, var(--light-gray) 100%);
+            padding: 60px 20px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
         .principles-content {
-            display:  flex;
-            flex-direction:  row;
-            gap:  20px;
-            width:  100%;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
         }
 
         .principles-column {
-            flex:  1;
-            display:  flex;
-            flex-direction:  column;
-            gap:  15px;
-            min-width:  0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--primary-white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-blue);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principles-column:hover {
+            border-color: var(--primary-orange);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         .principles-title {
-            font-size:  28px;
-            font-weight:  700;
-            color:  #f97316;
-            margin-bottom:  20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 18px;
         }
 
         .principles-list {
-            display:  flex;
-            flex-direction:  column;
-            gap:  10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .principle-item {
-            font-size:  16px;
-            color:  #f97316;
-            line-height:  1.5;
-            position:  relative;
-            padding-left:  25px;
+            font-size: 15px;
+            color: var(--secondary-gray);
+            line-height: 1.5;
+            position: relative;
+            padding-left: 25px;
         }
 
         .principle-item::before {
-            content:  '•';
-            position:  absolute;
-            left:  0;
-            color:  #f97316;
-            font-size:  20px;
-            line-height:  1.5;
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-size: 20px;
         }
 
         .biashara-footer {
-            background:  linear-gradient(135deg,  #182848  0%,  #2c2929  100%);
-            padding:  50px  30px;
-            color:  #f97316;
-            width:  100%;
-            box-sizing:  border-box;
+            background: var(--footer-black);
+            padding: 60px 20px;
+            color: var(--primary-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biashara-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: 0;
         }
 
         .footer-content {
-            max-width:  1280px;
-            margin:  0  auto;
-            display:  grid;
-            grid-template-columns:  repeat(4,  1fr);
-            gap:  30px;
-            padding-bottom:  30px;
-            box-sizing:  border-box;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding-bottom: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-column {
-            display:  flex;
-            flex-direction:  column;
-            gap:  12px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
         }
 
-        .footer-column  h4 {
-            font-size:  18px;
-            font-weight:  700;
-            margin-bottom:  12px;
-            color:  #ffffff;
+        .footer-column:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        .footer-column  a {
-            color:  #d1d5db;
-            text-decoration:  none;
-            font-size:  15px;
-            transition:  color  0.3s  ease;
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-white);
         }
 
-        .footer-column  a:hover {
-            color:  #f97316;
+        .footer-column a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary-blue);
         }
 
         .social-links {
-            display:  flex;
-            gap:  18px;
+            display: flex;
+            gap: 20px;
         }
 
-        .social-links  a {
-            font-size:  22px;
-            color:  #4b6cb7;
-            transition:  color  0.3s  ease,  transform  0.2s  ease;
+        .social-links a {
+            font-size: 20px;
+            color: var(--primary-white);
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
-        .social-links  a:hover {
-            color:  #f97316;
-            transform:  translateY(-2px);
+        .social-links a:hover {
+            color: var(--secondary-blue);
+            transform: translateY(-2px);
         }
 
         .footer-bottom {
-            text-align:  center;
-            padding-top:  30px;
-            border-top:  1px  solid  rgba(75,  108,  183,  0.2);
-            display:  flex;
-            flex-direction:  column;
-            align-items:  center;
-            justify-content:  center;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
-        .footer-bottom  p {
-            font-size:  14px;
-            color:  #d1d5db;
-            margin:  5px  0;
-            width:  100%;
-            text-align:  center;
+        .footer-bottom p {
+            font-size: 14px;
+            color: var(--primary-white);
+            margin: 5px 0;
         }
 
-        @media  (max-width:  1024px) {
+        @media (max-width: 1024px) {
             .biashara-nav {
-                padding:  12px  15px;
+                padding: 12px 15px;
             }
 
             .head {
-                font-size:  24px;
+                font-size: 24px;
             }
 
             .nav-content {
-                gap:  15px;
+                gap: 15px;
             }
 
             .links {
-                gap:  15px;
+                gap: 15px;
             }
 
             .links-child {
-                font-size:  15px;
-                padding:  8px;
+                font-size: 15px;
+                padding: 8px;
             }
 
-            .search-bar  input {
-                width:  120px;
-                font-size:  14px;
+            .search-bar input {
+                width: 120px;
+                font-size: 14px;
             }
 
             .biashara-about {
-                padding:  60px  15px;
+                padding: 40px 15px;
             }
 
             .about-title {
-                font-size:  32px;
+                font-size: 32px;
             }
 
-            .about-section  h2 {
-                font-size:  24px;
+            .about-section h2 {
+                font-size: 24px;
             }
 
-            .about-section  p,  .about-section  li {
-                font-size:  15px;
+            .about-section p, .about-section li {
+                font-size: 15px;
             }
 
             .map-placeholder {
-                height:  300px;
-            }
-
-            .principles-content {
-                flex-direction:  column;
-                gap:  20px;
+                height: 300px;
             }
 
             .footer-content {
-                grid-template-columns:  repeat(2,  1fr);
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
-        @media  (max-width:  768px) {
+        @media (max-width: 768px) {
             .hamburger {
-                display:  flex;
-                flex-direction:  column;
-                justify-content:  space-between;
-                width:  28px;
-                height:  20px;
-                cursor:  pointer;
-                margin-left:  10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 28px;
+                height: 20px;
+                cursor: pointer;
+                margin-left: 10px;
             }
 
-            .hamburger  span {
-                background:  #ffffff;
-                height:  3px;
-                border-radius:  2px;
-                transition:  all  0.3s  ease;
+            .hamburger span {
+                background: var(--primary-white);
+                height: 3px;
+                border-radius: 2px;
+                transition: all 0.3s ease;
             }
 
-            .nav-toggle:checked  +  .hamburger  span:nth-child(1) {
-                transform:  rotate(45deg)  translate(5px,  5px);
+            .nav-toggle:checked + .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
             }
 
-            .nav-toggle:checked  +  .hamburger  span:nth-child(2) {
-                opacity:  0;
+            .nav-toggle:checked + .hamburger span:nth-child(2) {
+                opacity: 0;
             }
 
-            .nav-toggle:checked  +  .hamburger  span:nth-child(3) {
-                transform:  rotate(-45deg)  translate(7px,  -7px);
+            .nav-toggle:checked + .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
             }
 
             .nav-content {
-                display:  none;
-                flex-direction:  column;
-                position:  absolute;
-                top:  80px;
-                left:  0;
-                width:  100%;
-                background:  #182848;
-                padding:  15px;
-                box-shadow:  0  4px  12px  rgba(0,  0,  0,  0.15);
-                align-items:  flex-start;
-                box-sizing:  border-box;
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                padding: 15px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                align-items: flex-start;
+                box-sizing: border-box;
             }
 
-            .nav-toggle:checked  ~  .nav-content {
-                display:  flex;
+            .nav-toggle:checked ~ .nav-content {
+                display: flex;
             }
 
             .links {
-                flex-direction:  column;
-                width:  100%;
-                align-items:  flex-start;
-                gap:  10px;
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+                gap: 10px;
             }
 
             .links-child {
-                padding:  12px;
-                font-size:  15px;
-                color:  #ffffff;
+                padding: 12px;
+                font-size: 15px;
+                color: var(--primary-white);
             }
 
             .dropdown-menu {
-                position:  static;
-                background:  rgba(24,  40,  72,  0.95);
-                box-shadow:  none;
-                transform:  none;
-                opacity:  1;
-                display:  none;
-                border-radius:  0;
-                animation:  none;
+                position: static;
+                background: var(--secondary-blue);
+                box-shadow: none;
+                transform: none;
+                opacity: 1;
+                display: none;
+                border-radius: 0;
+                animation: none;
             }
 
-            .dropdown.active  .dropdown-menu {
-                display:  block;
+            .dropdown.active .dropdown-menu {
+                display: block;
             }
 
             .search-bar {
-                margin-left:  10px;
-                padding:  6px  10px;
+                margin-left: 10px;
+                padding: 6px 10px;
             }
 
-            .search-bar  input {
-                width:  100px;
-                font-size:  14px;
+            .search-bar input {
+                width: 100px;
+                font-size: 14px;
             }
 
             .social-nav-links {
-                margin-top:  10px;
-                gap:  10px;
+                margin-top: 10px;
+                gap: 10px;
             }
 
-            .social-nav-links  a {
-                font-size:  16px;
+            .social-nav-links a {
+                font-size: 16px;
             }
 
             .biashara-about {
-                padding:  60px  10px;
+                padding: 40px 15px;
             }
 
             .about-title {
-                font-size:  30px;
+                font-size: 30px;
             }
 
-            .about-section  h2 {
-                font-size:  22px;
+            .about-section {
+                width: 95%;
+                max-width: 340px;
+                padding: 20px;
+                margin: 0 auto;
             }
 
-            .about-section  p,  .about-section  li {
-                font-size:  14px;
+            .about-section h2 {
+                font-size: 22px;
+            }
+
+            .about-section p, .about-section li {
+                font-size: 14px;
             }
 
             .map-placeholder {
-                height:  250px;
+                height: 250px;
+            }
+
+            .principles-content {
+                flex-direction: column;
+                gap: 20px;
             }
 
             .footer-content {
-                grid-template-columns:  repeat(2,  1fr);
-                gap:  20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
-        @media  (max-width:  500px) {
+        @media (max-width: 500px) {
             .biashara-nav {
-                padding:  10px  12px;
+                padding: 10px 12px;
             }
 
             .head {
-                font-size:  20px;
+                font-size: 20px;
             }
 
             .hamburger {
-                width:  24px;
-                height:  18px;
+                width: 24px;
+                height: 18px;
             }
 
-            .hamburger  span {
-                height:  2px;
+            .hamburger span {
+                height: 2px;
             }
 
             .nav-content {
-                top:  70px;
-                padding:  12px;
+                top: 70px;
+                padding: 12px;
             }
 
             .links-child {
-                font-size:  14px;
-                padding:  10px;
+                font-size: 14px;
+                padding: 10px;
             }
 
             .search-bar {
-                padding:  5px  8px;
+                padding: 5px 8px;
             }
 
-            .search-bar  input {
-                width:  80px;
-                font-size:  13px;
+            .search-bar input {
+                width: 80px;
+                font-size: 13px;
             }
 
-            .social-nav-links  a {
-                font-size:  14px;
+            .social-nav-links a {
+                font-size: 14px;
             }
 
             .biashara-about {
-                padding:  60px  10px;
+                padding: 30px 10px;
             }
 
             .about-title {
-                font-size:  28px;
+                font-size: 28px;
             }
 
-            .about-section  h2 {
-                font-size:  20px;
+            .about-section {
+                width: 95%;
+                max-width: 300px;
+                padding: 15px;
             }
 
-            .about-section  p,  .about-section  li {
-                font-size:  13px;
+            .about-section h2 {
+                font-size: 20px;
+            }
+
+            .about-section p, .about-section li {
+                font-size: 13px;
             }
 
             .map-placeholder {
-                height:  200px;
+                height: 200px;
             }
 
             .footer-content {
-                grid-template-columns:  repeat(2,  1fr);
-                gap:  15px;
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .footer-column {
+                padding: 15px;
             }
         }
     </style>
@@ -705,10 +794,10 @@
             </label>
             <div class="nav-content">
                 <div class="links">
-                         <a class="links-child" href="index.html" data-search="Home">Home</a>
+                    <a class="links-child" href="index.html" data-search="Home">Home</a>
                     <a class="links-child" href="about.html" data-search="Home">About Us</a>
                     <a class="links-child" href="services.html" data-search="Home">Services</a>
-                        <a class="links-child" href="news.html" data-search="Contact">News</a>
+                    <a class="links-child" href="news.html" data-search="Contact">News</a>
                     <a class="links-child" href="#contact" data-search="Contact">Contact</a>
                 </div>
                 <div class="search-bar">
@@ -810,8 +899,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Biashara Inc. | 123 Business Avenue, Nairobi, Kenya</p>
-                <p>© 2025 Biashara Inc. All rights reserved.</p>
+                <p>Biashara Sacco | 123 Business Avenue, Nairobi, Kenya</p>
+                <p>© 2025 Biashara Sacco. All rights reserved.</p>
             </div>
         </div>
     </div>
@@ -882,7 +971,7 @@
                         entry.target.classList.remove('visible');
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.3 });
 
             aboutSections.forEach(section => contentObserver.observe(section));
             contentObserver.observe(mapPlaceholder);
