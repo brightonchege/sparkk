@@ -8,12 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #1E3A8A;
-            --primary-orange: #F59E0B;
+            --primary-blue: #1E40AF;
+            --secondary-blue: #3B82F6;
+            --primary-orange: #F97316;
+            --secondary-orange: #FBBF24;
             --primary-white: #FFFFFF;
-            --secondary-gray: #374151;
-            --light-gray: #F9FAFB;
-            --border-blue: rgba(30, 58, 138, 0.1);
+            --light-gray: #F3F4F6;
+            --secondary-gray: #1F2937;
+            --border-blue: rgba(30, 64, 175, 0.15);
         }
 
         * {
@@ -36,11 +38,11 @@
         }
 
         .biashara-nav {
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             display: flex;
             align-items: center;
             padding: 15px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -56,9 +58,9 @@
         .head {
             font-size: 28px;
             font-weight: 800;
-            color: #ffffff;
+            color: var(--primary-white);
             margin-right: auto;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .nav-content {
@@ -74,16 +76,16 @@
         }
 
         .links-child {
-            color: #ffffff;
+            color: var(--primary-white);
             font-size: 16px;
             text-decoration: none;
-            padding: 10px;
+            padding: 10px 12px;
             position: relative;
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .links-child:hover {
-            color: #f97316;
+            color: var(--primary-orange);
             transform: translateY(-2px);
         }
 
@@ -92,7 +94,7 @@
             position: absolute;
             width: 100%;
             height: 2px;
-            background: #f97316;
+            background: var(--primary-orange);
             bottom: 0;
             left: 0;
         }
@@ -110,7 +112,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(24, 40, 72, 0.95);
+            background: var(--primary-blue);
             min-width: 200px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
@@ -124,22 +126,22 @@
 
         @keyframes jelly {
             0% { transform: scale(0.9, 0.9); opacity: 0; }
-            50% { transform: scale(1.1, 0.9); opacity: 0.8; }
+            50% { transform: scale(1.05, 0.95); opacity: 0.8; }
             100% { transform: scale(1, 1); opacity: 1; }
         }
 
         .dropdown-menu a {
             display: block;
             padding: 12px 20px;
-            color: #ffffff;
+            color: var(--primary-white);
             text-decoration: none;
             font-size: 15px;
             transition: background 0.2s ease, color 0.2s ease;
         }
 
         .dropdown-menu a:hover {
-            background: #f97316;
-            color: #ffffff;
+            background: var(--secondary-orange);
+            color: var(--primary-white);
         }
 
         .dropdown:hover .dropdown-menu {
@@ -153,7 +155,7 @@
         .search-bar {
             display: flex;
             align-items: center;
-            background: #ffffff;
+            background: var(--primary-white);
             border-radius: 25px;
             padding: 8px 12px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -163,19 +165,19 @@
             border: none;
             outline: none;
             font-size: 15px;
-            color: #182848;
+            color: var(--secondary-gray);
             width: 160px;
             padding: 5px;
         }
 
         .search-bar i {
-            color: #4b6cb7;
+            color: var(--secondary-blue);
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .search-bar i:hover {
-            color: #f97316;
+            color: var(--primary-orange);
         }
 
         .search-results {
@@ -183,7 +185,7 @@
             position: absolute;
             top: 100%;
             right: 20px;
-            background: #ffffff;
+            background: var(--primary-white);
             min-width: 220px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             border-radius: 8px;
@@ -196,15 +198,15 @@
         .search-results a {
             display: block;
             padding: 10px;
-            color: #182848;
+            color: var(--secondary-gray);
             text-decoration: none;
             font-size: 14px;
             transition: background 0.2s ease;
         }
 
         .search-results a:hover {
-            background: #f97316;
-            color: #ffffff;
+            background: var(--secondary-orange);
+            color: var(--primary-white);
             border-radius: 4px;
         }
 
@@ -214,24 +216,26 @@
         }
 
         .social-nav-links a {
-            color: #ffffff;
+            color: var(--primary-white);
             font-size: 18px;
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .social-nav-links a:hover {
-            color: #f97316;
+            color: var(--primary-orange);
             transform: translateY(-2px);
         }
 
         .biashara-hero {
-            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
+            background: linear-gradient(180deg, var(--primary-white) 0%, var(--light-gray) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
@@ -239,6 +243,18 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 1;
+        }
+
+        .biashara-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            z-index: 0;
         }
 
         .biashara-hero.visible .hero-content {
@@ -264,19 +280,20 @@
         .cta-button {
             background: var(--primary-orange);
             color: var(--primary-white);
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 25px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: background 0.3s ease, transform 0.2s ease;
-            min-width: 100px;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            min-width: 120px;
             text-align: center;
         }
 
         .cta-button:hover {
-            background: #D97706;
+            background: var(--secondary-orange);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .biashara-services, .biashara-loans, .biashara-membership, .biashara-news {
@@ -296,6 +313,18 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            position: relative;
+        }
+
+        .services-title::after, .loans-title::after, .membership-title::after, .news-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-orange);
+            transform: translateX(-50%);
         }
 
         .biashara-services.visible .services-title,
@@ -319,18 +348,37 @@
             width: 400px;
             height: 400px;
             background: var(--primary-white);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 2px solid var(--border-blue);
+            position: relative;
+            overflow: hidden;
             opacity: 0;
             transform: scale(0.95);
+        }
+
+        .services::before, .loan-item::before, .membership-item::before, .news-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .services:hover::before, .loan-item:hover::before, .membership-item:hover::before, .news-item:hover::before {
+            transform: scaleX(1);
         }
 
         .services.visible, .loan-item.visible, .membership-item.visible, .news-item.visible {
@@ -339,8 +387,9 @@
         }
 
         .services:hover, .loan-item:hover, .membership-item:hover, .news-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-orange);
         }
 
         .membership-item {
@@ -381,14 +430,15 @@
 
         .loan-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
             background: var(--primary-orange);
             color: var(--primary-white);
             font-size: 12px;
             font-weight: 600;
             padding: 6px 12px;
             border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .membership-details li {
@@ -405,7 +455,7 @@
         }
 
         .biashara-comments {
-            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
+            background: linear-gradient(180deg, var(--light-gray) 0%, var(--primary-white) 100%);
             padding: 80px 20px;
             min-height: 600px;
             display: flex;
@@ -419,7 +469,7 @@
             font-weight: 700;
             color: var(--primary-blue);
             text-align: center;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--primary-white);
             padding: 18px 36px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -446,37 +496,41 @@
             align-items: flex-start;
             gap: 12px;
             opacity: 0;
-            transition: opacity 0.6s ease, transform 0.3s ease, filter 0.3s ease;
-            border: 1px solid var(--border-blue);
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.3s ease;
+            border: 2px solid var(--border-blue);
         }
 
         .comment.under-title {
-            filter: blur(2px);
+            filter: blur(1.5px);
         }
 
         .comment:hover {
             transform: translateY(-5px);
             filter: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         .comment.visible {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        .comment:nth-child(2) { transition-delay: 0.3s; }
-        .comment:nth-child(3) { transition-delay: 0.4s; }
-        .comment:nth-child(4) { transition-delay: 0.5s; }
-        .comment:nth-child(5) { transition-delay: 0.6s; }
-        .comment:nth-child(6) { transition-delay: 0.7s; }
-        .comment:nth-child(7) { transition-delay: 0.8s; }
-        .comment:nth-child(8) { transition-delay: 0.9s; }
-        .comment:nth-child(9) { transition-delay: 1.0s; }
+        .comment:nth-child(2) { transition-delay: 0.1s; }
+        .comment:nth-child(3) { transition-delay: 0.15s; }
+        .comment:nth-child(4) { transition-delay: 0.2s; }
+        .comment:nth-child(5) { transition-delay: 0.25s; }
+        .comment:nth-child(6) { transition-delay: 0.3s; }
+        .comment:nth-child(7) { transition-delay: 0.35s; }
+        .comment:nth-child(8) { transition-delay: 0.4s; }
+        .comment:nth-child(9) { transition-delay: 0.45s; }
 
         .comment-profile-pic {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: var(--primary-blue);
+            background: var(--secondary-blue);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -503,7 +557,7 @@
         }
 
         .biashara-principles {
-            background: linear-gradient(180deg, var(--light-gray) 0%, #E5E7EB 100%);
+            background: linear-gradient(180deg, var(--primary-white) 0%, var(--light-gray) 100%);
             padding: 80px 20px;
             max-width: 1280px;
             margin: 0 auto;
@@ -520,6 +574,17 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            background: var(--primary-white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-blue);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principles-column:hover {
+            border-color: var(--primary-orange);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         .principles-title {
@@ -552,7 +617,7 @@
         }
 
         .biashara-footer {
-            background: linear-gradient(135deg, #D97706 0%, #7C2D12 100%);
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
             padding: 80px 20px;
             color: var(--primary-white);
         }
@@ -570,6 +635,14 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .footer-column:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .footer-column h4 {
@@ -579,7 +652,7 @@
         }
 
         .footer-column a {
-            color: #E5E7EB;
+            color: var(--primary-white);
             text-decoration: none;
             font-size: 15px;
             font-weight: 500;
@@ -587,7 +660,7 @@
         }
 
         .footer-column a:hover {
-            color: var(--primary-orange);
+            color: var(--secondary-blue);
         }
 
         .newsletter-form {
@@ -607,7 +680,7 @@
         }
 
         .newsletter-form button {
-            background: var(--primary-orange);
+            background: var(--primary-blue);
             color: var(--primary-white);
             padding: 10px;
             border: none;
@@ -619,7 +692,7 @@
         }
 
         .newsletter-form button:hover {
-            background: #D97706;
+            background: var(--secondary-blue);
         }
 
         .social-links {
@@ -634,19 +707,19 @@
         }
 
         .social-links a:hover {
-            color: var(--primary-orange);
+            color: var(--secondary-blue);
             transform: translateY(-2px);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .footer-bottom p {
             font-size: 14px;
-            color: #E5E7EB;
+            color: var(--primary-white);
             margin: 5px 0;
         }
 
@@ -703,7 +776,7 @@
             }
 
             .hamburger span {
-                background: #ffffff;
+                background: var(--primary-white);
                 height: 3px;
                 border-radius: 2px;
                 transition: all 0.3s ease;
@@ -728,7 +801,7 @@
                 top: 80px;
                 left: 0;
                 width: 100%;
-                background: #182848;
+                background: var(--primary-blue);
                 padding: 15px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                 align-items: flex-start;
@@ -749,12 +822,12 @@
             .links-child {
                 padding: 12px;
                 font-size: 15px;
-                color: #ffffff;
+                color: var(--primary-white);
             }
 
             .dropdown-menu {
                 position: static;
-                background: rgba(24, 40, 72, 0.95);
+                background: var(--secondary-blue);
                 box-shadow: none;
                 transform: none;
                 opacity: 1;
@@ -1198,7 +1271,7 @@
             sections.forEach(section => observer.observe(section));
             items.forEach((item, index) => {
                 observer.observe(item);
-                item.style.transitionDelay = `${0.3 + index * 0.2}s`;
+                item.style.transitionDelay = `${0.1 + index * 0.05}s`;
             });
 
             const handleScroll = () => {
